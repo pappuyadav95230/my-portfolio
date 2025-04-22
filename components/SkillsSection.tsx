@@ -5,7 +5,7 @@ import { FaDownload, FaEye } from "react-icons/fa";
 import { WorkTogether } from "./WorkTogether";
 
 const RESUME_DOWNLOAD_LINK =
-  "https://drive.google.com/file/d/1_4Oic42ANo0VVo7iYzanaoc6VeRAt943/view";
+  "https://drive.google.com/file/d/14aulnauvOANFQxcqWzbnb53OCWNymLF5/view";
 
 const skills = [
   // Programming Languages
