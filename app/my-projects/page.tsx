@@ -28,7 +28,7 @@ const projects = [
     description: "Real-time stock price tracking platform with clean, intuitive interface for enhanced trading experience. Features advanced charting and portfolio management.",
     technologies: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "EJS", "MongoDB", "RESTful API"],
     link: "#",
-    date: "May 2025 - June 2025",
+    date: "May 2025",
     icon: "📈"
   },
   {
@@ -36,7 +36,7 @@ const projects = [
     description: "AI-powered assistant providing real-time conversational responses and context-aware suggestions through Gemini API integration.",
     technologies: ["Next.js", "Tailwind CSS", "ShadCN UI", "TypeScript", "Gemini API"],
     link: "#",
-    date: "May 2025 - June 2025",
+    date: "June 2025",
     icon: "🤖"
   },
   {
@@ -44,7 +44,7 @@ const projects = [
     description: "Enterprise-grade video conferencing solution with real-time messaging, screen sharing, and secure meeting rooms for professional collaboration.",
     technologies: ["React", "Next.js", "Express", "Socket.io", "Tailwind CSS", "WebRTC"],
     link: "#",
-    date: "March 2025",
+    date: "july 2025",
     icon: "🎥"
   },
   {
@@ -52,7 +52,7 @@ const projects = [
     description: "A professional networking platform that enables seamless connection and collaboration between individuals and organizations, fostering career growth, opportunities, and knowledge sharing.",
     technologies: ["React", "Next.js", "Express", "Socket.io", "Tailwind CSS", "MongoDB"],
     link: "#",
-    date: "March 2025",
+    date: "Aug 2025",
     icon: "🌐"
   }
 ];

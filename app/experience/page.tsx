@@ -16,7 +16,6 @@ const experiences = [
     period: "Jan 2024 – Present",
     details: [
       "Contributed to front-end and back-end development for diverse projects.",
-      "Worked on company site, Agarwal Packers and Movers, zuzozi.com, Kiya Preschool, and XtendedSpace.",
       "Enhanced user experience and optimized design for performance.",
     ],
     icon: <FaBriefcase className="text-blue-400" />,

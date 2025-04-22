@@ -1,4 +1,5 @@
 "use client";
+import { WorkTogether } from "@/components/WorkTogether";
 import { motion } from "framer-motion";
 import { FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaUsers } from "react-icons/fa";
 
@@ -10,7 +11,6 @@ const experiences = [
     period: "Jan 2024 – Present",
     details: [
       "Contributed to front-end and back-end development for diverse projects.",
-      "Worked on company site, Agarwal Packers and Movers, zuzozi.com, Kiya Preschool, and XtendedSpace.",
       "Enhanced user experience and optimized design for performance."
     ],
     icon: <FaBriefcase className="text-blue-400" />
@@ -107,7 +107,7 @@ const certifications = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 bg-gray-950 relative overflow-hidden">
+    <section id="experience" className="py-32 bg-gray-950 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
         {[...Array(20)].map((_, i) => (
@@ -132,7 +132,7 @@ const Experience = () => {
         ))}
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -453,9 +453,9 @@ const Experience = () => {
                 whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
                 className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-xl shadow-lg overflow-hidden hover:border-purple-500/50 transition-all duration-300 group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="p-6">
+                <div className="absolute inset-0 bg-gradient-to-br  from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10 ">
+                  <div className="p-6 ">
                     <div className="flex items-center mb-4">
                       <div className="p-3 bg-purple-500/20 rounded-full mr-4">
                         {cert.icon}
@@ -478,6 +478,7 @@ const Experience = () => {
           </div>
         </motion.div>
       </div>
+     
     </section>
   );
 };
