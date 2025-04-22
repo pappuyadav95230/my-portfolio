@@ -6,52 +6,54 @@ import { WorkTogether } from '@/components/WorkTogether';
 
 const projects = [
   {
-    title: "Wanderlust - Fullstack Rentals",
+    title: "My Portfolio - Digital Showcase",
+    description: "A sleek developer portfolio showcasing my skills and projects. Built with modern technologies for optimal performance and aesthetics.",
+    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Framer Motion"],
+    link: "https://pappu-portfolio.vercel.app/",
+    date: "April 2025",
+    icon: "✨"
+  },
+  
+  {
+    title: "Wanderlust - Fullstack Rentals Platform",
     description: "A comprehensive rental platform where users can list and discover apartments and houses. Features user authentication, search filters, and booking system.",
     technologies: ["Node.js", "Express", "MongoDB", "RESTful API", "EJS", "JavaScript"],
     link: "#",
     date: "March 2025",
     icon: "🏡"
   },
+ 
   {
-    title: "My Portfolio",
-    description: "A sleek developer portfolio showcasing my skills and projects. Built with modern technologies for optimal performance and aesthetics.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Framer Motion"],
-    link: "https://pappukumar.vercel.app/",
-    date: "April 2025",
-    icon: "✨"
-  },
-  {
-    title: "Crafty Web Builder",
-    description: "Revolutionary no-code platform enabling users to create professional websites through an intuitive drag-and-drop interface.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "BigQuery", "DnD"],
-    link: "https://craftyweb.vercel.app/",
-    date: "February 2025",
-    icon: "🛠️"
-  },
-  {
-    title: "CEAS Cloud Services",
-    description: "Cloud infrastructure provider offering seamless web deployment solutions with Firebase integration.",
-    technologies: ["Firebase", "JavaScript", "Bootstrap", "Cloud Hosting"],
+    title: "StockSense - Real-time Market Tracker",
+    description: "Real-time stock price tracking platform with clean, intuitive interface for enhanced trading experience. Features advanced charting and portfolio management.",
+    technologies: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "EJS", "MongoDB", "RESTful API"],
     link: "#",
-    date: "Feb 2023",
-    icon: "☁️"
+    date: "May 2025 - June 2025",
+    icon: "📈"
   },
   {
-    title: "Zuzozi EV Booking",
-    description: "Electric vehicle booking platform with real-time availability and reservation management system.",
-    technologies: ["JavaScript", "Firebase", "AppScript", "Google APIs"],
+    title: "NexAI - Smart Conversational Assistant",
+    description: "AI-powered assistant providing real-time conversational responses and context-aware suggestions through Gemini API integration.",
+    technologies: ["Next.js", "Tailwind CSS", "ShadCN UI", "TypeScript", "Gemini API"],
     link: "#",
-    date: "July 2024",
-    icon: "🚗"
+    date: "May 2025 - June 2025",
+    icon: "🤖"
   },
   {
-    title: "FuelLock IoT System",
-    description: "Innovative hardware solution preventing fuel theft through RFID authentication at petrol stations.",
-    technologies: ["Arduino", "RFID", "Embedded C", "IoT"],
+    title: "Chattrix - Enterprise Video Conferencing",
+    description: "Enterprise-grade video conferencing solution with real-time messaging, screen sharing, and secure meeting rooms for professional collaboration.",
+    technologies: ["React", "Next.js", "Express", "Socket.io", "Tailwind CSS", "WebRTC"],
     link: "#",
-    date: "October 2023",
-    icon: "⛽"
+    date: "March 2025",
+    icon: "🎥"
+  },
+  {
+    title: "NetVibe - Professional Networking Hub",
+    description: "A professional networking platform that enables seamless connection and collaboration between individuals and organizations, fostering career growth, opportunities, and knowledge sharing.",
+    technologies: ["React", "Next.js", "Express", "Socket.io", "Tailwind CSS", "MongoDB"],
+    link: "#",
+    date: "March 2025",
+    icon: "🌐"
   }
 ];
 
