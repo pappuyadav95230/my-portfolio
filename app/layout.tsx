@@ -27,9 +27,9 @@ export default function RootLayout({
         {/* Fallback to Inter */}
         {/* OR if you get Geist working: */}
         {/* <body className={`${GeistSans.variable} ${GeistMono.variable}`}> */}
-        <Navbar />
+        {/* <Navbar />
         {children}
-        <Footer /> {/* Add Footer here */}
+        <Footer />  */}
       </body>
     </html>
   );
