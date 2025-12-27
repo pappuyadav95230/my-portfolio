@@ -37,11 +37,12 @@ const skills = [
   { name: "Docker", level: 65, icon: "docker" },
   { name: "Kubernetes", level: 55, icon: "kubernetes" },
 
-  // Computer Science Fundamentals
-  { name: "Data Structures", level: 80, icon: "database" },
-  { name: "Algorithms", level: 75, icon: "algorithm" },
-  { name: "OOP", level: 85, icon: "oop" },
-  { name: "Problem Solving", level: 80, icon: "problemsolving" },
+  // AI & Automation
+  { name: "OpenAI API", level: 70, icon: "openai" },
+  { name: "AI Integration", level: 75, icon: "ai" },
+  { name: "Business Automation", level: 80, icon: "automation" },
+  { name: "Process Optimization", level: 85, icon: "optimization" },
+  { name: "Gemini AI", level: 70, icon: "gemini" },
 ];
 
 const Skills = () => {
@@ -85,6 +86,15 @@ const Skills = () => {
             return ["database", "algorithm", "oop", "problemsolving"].includes(
               skill.icon
             );
+          }
+          if (activeTab === "ai") {
+            return [
+              "openai",
+              "ai",
+              "automation",
+              "optimization",
+              "gemini",
+            ].includes(skill.icon);
           }
           return true;
         });
@@ -182,6 +192,16 @@ const Skills = () => {
             >
               CS Fundamentals
             </button>
+            <button
+              onClick={() => setActiveTab("ai")}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                activeTab === "ai"
+                  ? "bg-pink-600 text-white"
+                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+              }`}
+            >
+              AI & Automation
+            </button>
           </motion.div>
 
           {/* Skill Cards */}
@@ -210,6 +230,16 @@ const Skills = () => {
                       <span className="text-2xl">🔍</span>
                     ) : skill.name === "Cloud Run" ? (
                       <span className="text-2xl">☁️</span>
+                    ) : skill.icon === "openai" ? (
+                      <span className="text-2xl">🤖</span>
+                    ) : skill.icon === "ai" ? (
+                      <span className="text-2xl">🧠</span>
+                    ) : skill.icon === "automation" ? (
+                      <span className="text-2xl">⚡</span>
+                    ) : skill.icon === "optimization" ? (
+                      <span className="text-2xl">📈</span>
+                    ) : skill.icon === "gemini" ? (
+                      <span className="text-2xl">✨</span>
                     ) : (
                       <img
                         src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-original.svg`}
