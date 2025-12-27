@@ -1,41 +1,102 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hi, I'm Pappu Kumar Yadav 👋
 
-## Getting Started
+## Full-Stack Developer | 2+ Years Experience
 
-First, run the development server:
+**Frontend • Backend • Cloud • AI Automation**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🚀 Web Developer @ **Alphanumeric Ideas Pvt. Ltd.**
+🏗️ Building **scalable SaaS products** and production-ready web applications
+🤖 Implementing **AI automation** to improve development and operational speed by **~40%**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧑‍💻 Professional Summary
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Full-Stack Developer with 2+ years of hands-on experience in designing, developing, and deploying modern web applications. Strong background in **frontend, backend, databases, cloud infrastructure**, and **AI integration**. Experienced in building scalable SaaS systems, authentication flows, analytics dashboards, and automation pipelines.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🌐 Frontend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Next.js, React
+- TypeScript, JavaScript
+- Tailwind CSS,
+- Responsive UI & UX optimization
 
-## Deploy on Vercel
+### ⚙️ Backend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Node.js, Express.js
+- Python (Flask)
+- REST API development
+- Authentication & Authorization (JWT, Role-based access)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# my-portfolio
-Nextjs Portfolio
->>>>>>> 1dc6f0e2529a4028efff1a586ac370daa1965c6c
+### 🗄️ Databases
+
+- MongoDB
+- SQL (MySQL / PostgreSQL)
+- Google Cloud Spanner
+- Firebase (Realtime DB / Firestore)
+
+### ☁️ Cloud & DevOps
+
+- Google Cloud Platform (GCP)
+- Cloud Run (Deployment & Scaling)
+- Firebase Hosting & Auth
+- FileZilla
+- Environment & production configuration
+
+### 🤖 AI & Automation
+
+- Gemini AI API Integration
+- AI-driven content & workflow automation
+- Process optimization reducing manual effort by **~40%**
+
+---
+
+## 📚 Core Computer Science
+
+- Data Structures & Algorithms
+- Object-Oriented Programming (OOP)
+- Operating Systems
+- DBMS
+- Computer Networks
+
+### 🧠 Programming Languages
+
+- C
+- C++
+- Python
+- JavaScript
+
+---
+
+## 💼 Current Role
+
+**Web Developer — Alphanumeric Ideas Pvt. Ltd.**
+📍 Mohali, Chandigarh
+🕒 Sept 2023 – Present
+
+**Responsibilities:**
+
+- Developing and maintaining **frontend & backend** features
+- Building SEO-optimized and scalable SaaS modules
+- Deploying applications on **Google Cloud**
+- Integrating AI tools for automation and productivity
+- Improving performance, UX, and system reliability
+
+---
+
+## 🎯 Career Focus
+
+- Building **real-world SaaS products**
+
+---
+
+## 📫 Connect With Me
+
+- GitHub: https://github.com/your-username
+- LinkedIn: https://linkedin.com/in/your-link
+- Leetcode: https://leetcode.com/u/Pappu_95230/
+- Email: 610490papu@gmail.com
