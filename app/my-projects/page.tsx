@@ -1,65 +1,119 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { WorkTogether } from '@/components/WorkTogether';
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { WorkTogether } from "@/components/WorkTogether";
 
 const projects = [
   {
     title: "My Portfolio - Digital Showcase",
-    description: "A sleek developer portfolio showcasing my skills and projects. Built with modern technologies for optimal performance and aesthetics.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Framer Motion"],
+    description:
+      "A sleek developer portfolio showcasing my skills and projects. Built with modern technologies for optimal performance and aesthetics.",
+    technologies: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "TypeScript",
+      "Framer Motion",
+    ],
     link: "https://pappu-portfolio.vercel.app/",
-    date: "April 2025",
-    icon: "✨"
+    icon: "✨",
   },
-  
+
   {
-    title: "Wanderlust - Fullstack Rentals Platform",
-    description: "A comprehensive rental platform where users can list and discover apartments and houses. Features user authentication, search filters, and booking system.",
-    technologies: ["Node.js", "Express", "MongoDB", "RESTful API", "EJS", "JavaScript"],
-    link: "#",
-    date: "March 2025",
-    icon: "🏡"
+    title: "StayHub - Fullstack Rentals Platform",
+    description:
+      "A comprehensive rental platform where users can list and discover apartments and houses. Features user authentication, search filters, and booking system.",
+    technologies: [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "RESTful API",
+      "EJS",
+      "JavaScript",
+    ],
+    link: "https://github.com/pappuyadav95230/StayHub",
+    icon: "🏡",
   },
- 
+
+  {
+    title: "Weather App - Real-time Weather Tracker",
+    description:
+      "A real-time weather application that provides current weather conditions, forecasts, and location-based weather updates using weather API integration.",
+    technologies: ["React", "JavaScript", "CSS", "Material UI", "Weather API"],
+    link: "https://github.com/pappuyadav95230/WeatherApp",
+    icon: "🌤️",
+  },
+
   {
     title: "StockSense - Real-time Market Tracker",
-    description: "Real-time stock price tracking platform with clean, intuitive interface for enhanced trading experience. Features advanced charting and portfolio management.",
-    technologies: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "EJS", "MongoDB", "RESTful API"],
+    description:
+      "Real-time stock price tracking platform with clean, intuitive interface for enhanced trading experience. Features advanced charting and portfolio management.",
+    technologies: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "EJS",
+      "MongoDB",
+      "RESTful API",
+    ],
     link: "#",
-    date: "May 2025",
-    icon: "📈"
+    icon: "📈",
   },
   {
     title: "NexAI - Smart Conversational Assistant",
-    description: "AI-powered assistant providing real-time conversational responses and context-aware suggestions through Gemini API integration.",
-    technologies: ["Next.js", "Tailwind CSS", "ShadCN UI", "TypeScript", "Gemini API"],
+    description:
+      "AI-powered assistant providing real-time conversational responses and context-aware suggestions through Gemini API integration.",
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "ShadCN UI",
+      "TypeScript",
+      "Gemini API",
+    ],
     link: "#",
-    date: "June 2025",
-    icon: "🤖"
+    icon: "🤖",
   },
   {
     title: "Chattrix - Enterprise Video Conferencing",
-    description: "Enterprise-grade video conferencing solution with real-time messaging, screen sharing, and secure meeting rooms for professional collaboration.",
-    technologies: ["React", "Next.js", "Express", "Socket.io", "Tailwind CSS", "WebRTC"],
+    description:
+      "Enterprise-grade video conferencing solution with real-time messaging, screen sharing, and secure meeting rooms for professional collaboration.",
+    technologies: [
+      "React",
+      "Next.js",
+      "Express",
+      "Socket.io",
+      "Tailwind CSS",
+      "WebRTC",
+    ],
     link: "#",
-    date: "july 2025",
-    icon: "🎥"
+    icon: "🎥",
   },
   {
     title: "NetVibe - Professional Networking Hub",
-    description: "A professional networking platform that enables seamless connection and collaboration between individuals and organizations, fostering career growth, opportunities, and knowledge sharing.",
-    technologies: ["React", "Next.js", "Express", "Socket.io", "Tailwind CSS", "MongoDB"],
+    description:
+      "A professional networking platform that enables seamless connection and collaboration between individuals and organizations, fostering career growth, opportunities, and knowledge sharing.",
+    technologies: [
+      "React",
+      "Next.js",
+      "Express",
+      "Socket.io",
+      "Tailwind CSS",
+      "MongoDB",
+    ],
     link: "#",
-    date: "Aug 2025",
-    icon: "🌐"
-  }
+    icon: "🌐",
+  },
 ];
 
 const Projects = () => {
   return (
-    <section id="projects" className="relative py-32 bg-gradient-to-b from-[#0a0a12] via-[#141421] to-[#0a0a12] overflow-hidden">
+    <section
+      id="projects"
+      className="relative py-32 bg-gradient-to-b from-[#0a0a12] via-[#141421] to-[#0a0a12] overflow-hidden"
+    >
       {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
         {[...Array(12)].map((_, i) => (
@@ -85,7 +139,7 @@ const Projects = () => {
           />
         ))}
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-24">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -95,11 +149,15 @@ const Projects = () => {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Crafted</span> With Passion
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+              Crafted
+            </span>{" "}
+            With Passion
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Each project represents a unique challenge solved with creativity and technical expertise. 
-            From concept to deployment, I pour my heart into building digital experiences that matter.
+            Each project represents a unique challenge solved with creativity
+            and technical expertise. From concept to deployment, I pour my heart
+            into building digital experiences that matter.
           </p>
           <div className="w-32 h-1.5 bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 mx-auto rounded-full mb-12"></div>
         </motion.div>
@@ -110,25 +168,28 @@ const Projects = () => {
               key={index}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(139, 92, 246, 0.3)" }}
-              transition={{ 
-                duration: 0.6, 
+              whileHover={{
+                y: -10,
+                boxShadow: "0 20px 25px -5px rgba(139, 92, 246, 0.3)",
+              }}
+              transition={{
+                duration: 0.6,
                 delay: index * 0.1,
                 type: "spring",
-                stiffness: 100
+                stiffness: 100,
               }}
               viewport={{ once: true, margin: "-50px" }}
               className="bg-[#1c1c2c]/80 backdrop-blur-lg rounded-2xl border border-gray-800 hover:border-purple-400/30 transition-all duration-500 overflow-hidden group"
             >
               <div className="h-48 bg-gradient-to-br from-[#2a2a3a] to-[#1a1a2e] flex flex-col items-center justify-center relative overflow-hidden">
-                <motion.span 
+                <motion.span
                   className="text-6xl mb-4 z-10"
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
-                  transition={{ 
+                  transition={{
                     duration: 5,
                     repeat: Infinity,
-                    repeatType: "reverse"
+                    repeatType: "reverse",
                   }}
                 >
                   {project.icon}
@@ -141,16 +202,13 @@ const Projects = () => {
                   <h3 className="text-2xl font-bold text-white group-hover:text-purple-300 transition-colors">
                     {project.title}
                   </h3>
-                  <span className="text-sm text-gray-400 bg-gray-800/50 px-2 py-1 rounded">
-                    {project.date}
-                  </span>
                 </div>
                 <p className="text-gray-300 mb-5 leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech, i) => (
-                    <motion.span 
+                    <motion.span
                       key={i}
                       whileHover={{ scale: 1.05 }}
                       className="text-xs bg-gray-800/80 text-purple-300 px-3 py-1.5 rounded-full border border-gray-700"
@@ -166,15 +224,35 @@ const Projects = () => {
                     className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all group-hover:shadow-lg group-hover:shadow-purple-500/20"
                   >
                     <span>Explore Live</span>
-                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    <svg
+                      className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
                     </svg>
                   </Link>
                 ) : (
                   <button className="inline-flex items-center px-4 py-2 bg-gray-800 text-gray-400 rounded-lg cursor-not-allowed">
                     <span>Coming Soon</span>
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      className="w-4 h-4 ml-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </button>
                 )}
@@ -198,15 +276,24 @@ const Projects = () => {
             className="inline-flex items-center px-8 py-3 bg-transparent text-purple-400 border-2 border-purple-400 rounded-lg hover:bg-purple-400/10 transition-all group"
           >
             <span className="font-medium">Start a Conversation</span>
-            <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <svg
+              className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
             </svg>
           </Link>
         </motion.div>
       </div>
       <WorkTogether />
     </section>
-
   );
 };
 
