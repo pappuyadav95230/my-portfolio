@@ -23,13 +23,12 @@ export default function RootLayout({
     <html lang="en">
       {/* Use either Geist or Inter font */}
       <body className={inter.className}>
-        {" "}
         {/* Fallback to Inter */}
         {/* OR if you get Geist working: */}
         {/* <body className={`${GeistSans.variable} ${GeistMono.variable}`}> */}
-        {/* <Navbar />
+        <Navbar />
         {children}
-        <Footer />  */}
+        <Footer />
       </body>
     </html>
   );
