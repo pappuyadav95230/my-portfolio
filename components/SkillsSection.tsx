@@ -1,313 +1,192 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { FaDownload, FaEye } from "react-icons/fa";
+import Link from "next/link";
 import { WorkTogether } from "./WorkTogether";
 
-const RESUME_DOWNLOAD_LINK =
-  "https://drive.google.com/file/d/14aulnauvOANFQxcqWzbnb53OCWNymLF5/view";
+const RESUME_LINK = "https://drive.google.com/file/d/14aulnauvOANFQxcqWzbnb53OCWNymLF5/view";
 
-const skills = [
-  // Programming Languages
-  { name: "C", level: 85, icon: "c" },
-  { name: "C++", level: 80, icon: "cplusplus" },
-  { name: "Python", level: 75, icon: "python" },
-  { name: "JavaScript", level: 80, icon: "javascript" },
-  { name: "TypeScript", level: 75, icon: "typescript" },
-
-  // Web Development
-  { name: "HTML5", level: 90, icon: "html5" },
-  { name: "CSS3", level: 85, icon: "css3" },
-  { name: "Tailwind CSS", level: 80, icon: "tailwindcss" },
-  { name: "React", level: 75, icon: "react" },
-  { name: "Next.js", level: 70, icon: "nextjs" },
-
-  // Backend & Databases
-  { name: "Node.js", level: 70, icon: "nodejs" },
-  { name: "Express.js", level: 70, icon: "express" },
-  { name: "MongoDB", level: 65, icon: "mongodb" },
-  { name: "MySQL", level: 70, icon: "mysql" },
-  { name: "PostgreSQL", level: 65, icon: "postgresql" },
-
-  // Cloud & DevOps
-  { name: "Firebase", level: 70, icon: "firebase" },
-  { name: "Google Cloud", level: 65, icon: "googlecloud" },
-  { name: "BigQuery", level: 60, icon: "googlecloud" },
-  { name: "Cloud Run", level: 60, icon: "googlecloud" },
-  { name: "Docker", level: 65, icon: "docker" },
-  { name: "Kubernetes", level: 55, icon: "kubernetes" },
-
-  // AI & Automation
-  { name: "OpenAI API", level: 70, icon: "openai" },
-  { name: "AI Integration", level: 75, icon: "ai" },
-  { name: "Business Automation", level: 80, icon: "automation" },
-  { name: "Process Optimization", level: 85, icon: "optimization" },
-  { name: "Gemini AI", level: 70, icon: "gemini" },
+// ── Tech stack organized by category (no progress bars)
+const TECH_GROUPS = [
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+  },
+  {
+    category: "Backend",
+    items: ["Node.js", "Express.js", "FastAPI", "Python", "REST APIs"],
+  },
+  {
+    category: "Database",
+    items: ["MongoDB", "PostgreSQL", "Supabase", "Firebase"],
+  },
+  {
+    category: "Cloud & DevOps",
+    items: ["Google Cloud", "Cloud Run", "BigQuery", "Cloud Spanner", "Docker", "Kubernetes"],
+  },
+  {
+    category: "AI & Automation",
+    items: ["Gemini AI", "Ollama", "Google Ads API", "Shopify API", "Automation"],
+  },
 ];
 
-const Skills = () => {
-  const [activeTab, setActiveTab] = useState("all");
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
-  const filteredSkills =
-    activeTab === "all"
-      ? skills
-      : skills.filter((skill) => {
-          if (activeTab === "languages") {
-            return [
-              "c",
-              "cplusplus",
-              "python",
-              "javascript",
-              "typescript",
-            ].includes(skill.icon);
-          }
-          if (activeTab === "web") {
-            return ["html5", "css3", "tailwindcss", "react", "nextjs"].includes(
-              skill.icon
-            );
-          }
-          if (activeTab === "backend") {
-            return [
-              "nodejs",
-              "express",
-              "mongodb",
-              "mysql",
-              "postgresql",
-            ].includes(skill.icon);
-          }
-          if (activeTab === "cloud") {
-            return (
-              ["firebase", "googlecloud", "docker", "kubernetes"].includes(
-                skill.icon
-              ) || ["BigQuery", "Cloud Run"].includes(skill.name)
-            );
-          }
-          if (activeTab === "cs") {
-            return ["database", "algorithm", "oop", "problemsolving"].includes(
-              skill.icon
-            );
-          }
-          if (activeTab === "ai") {
-            return [
-              "openai",
-              "ai",
-              "automation",
-              "optimization",
-              "gemini",
-            ].includes(skill.icon);
-          }
-          return true;
-        });
-
+const SkillsSection = () => {
   return (
     <>
+      {/* ═══════════════════════════════════════════
+           TECHNOLOGY & EXPERTISE
+      ═══════════════════════════════════════════ */}
       <section
         id="skills"
-        className="py-16 bg-gradient-to-b from-gray-900 to-gray-800"
+        className="bg-[#0d0d0d] py-24 sm:py-32 relative overflow-hidden"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-          {/* Section Header */}
+        {/* Top edge separator */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          {/* Section header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-16 sm:mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              My <span className="text-purple-400">Skills</span> & Expertise
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mb-6">
-              I've developed a diverse skill set across multiple domains of
-              software development
+            <p className="text-[11px] uppercase tracking-[0.22em] text-gray-600 font-semibold mb-4">
+              What I work with
             </p>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto rounded-full"></div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+              Technology
+              <br />
+              <span className="text-gray-600 font-light">&amp; Expertise</span>
+            </h2>
           </motion.div>
 
-          {/* Skill Categories */}
+          {/* Tech groups — editorial list layout */}
           <motion.div
-            className="flex flex-wrap justify-center gap-3 mb-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            className="space-y-0 divide-y divide-white/[0.05]"
           >
-            <button
-              onClick={() => setActiveTab("all")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "all"
-                  ? "bg-purple-600 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              All Skills
-            </button>
-            <button
-              onClick={() => setActiveTab("languages")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "languages"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              Languages
-            </button>
-            <button
-              onClick={() => setActiveTab("web")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "web"
-                  ? "bg-green-600 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              Frontend
-            </button>
-            <button
-              onClick={() => setActiveTab("backend")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "backend"
-                  ? "bg-yellow-600 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              Backend & DB
-            </button>
-            <button
-              onClick={() => setActiveTab("cloud")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "cloud"
-                  ? "bg-red-600 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              Cloud & DevOps
-            </button>
-            <button
-              onClick={() => setActiveTab("cs")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "cs"
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              CS Fundamentals
-            </button>
-            <button
-              onClick={() => setActiveTab("ai")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === "ai"
-                  ? "bg-pink-600 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}
-            >
-              AI & Automation
-            </button>
-          </motion.div>
-
-          {/* Skill Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
-            {filteredSkills.map((skill, index) => (
+            {TECH_GROUPS.map((group) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.03 }}
-                viewport={{ once: true, margin: "-50px" }}
-                whileHover={{ y: -5 }}
-                className="bg-[#1c1c2c]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-700 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300"
+                key={group.category}
+                variants={itemVariants}
+                className="py-8 sm:py-10 flex flex-col sm:flex-row sm:items-baseline gap-4 sm:gap-12 group"
               >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-lg mr-4">
-                    {skill.icon === "database" ? (
-                      <span className="text-2xl">📊</span>
-                    ) : skill.icon === "algorithm" ? (
-                      <span className="text-2xl">🧠</span>
-                    ) : skill.icon === "oop" ? (
-                      <span className="text-2xl">🔄</span>
-                    ) : skill.icon === "problemsolving" ? (
-                      <span className="text-2xl">💡</span>
-                    ) : skill.name === "BigQuery" ? (
-                      <span className="text-2xl">🔍</span>
-                    ) : skill.name === "Cloud Run" ? (
-                      <span className="text-2xl">☁️</span>
-                    ) : skill.icon === "openai" ? (
-                      <span className="text-2xl">🤖</span>
-                    ) : skill.icon === "ai" ? (
-                      <span className="text-2xl">🧠</span>
-                    ) : skill.icon === "automation" ? (
-                      <span className="text-2xl">⚡</span>
-                    ) : skill.icon === "optimization" ? (
-                      <span className="text-2xl">📈</span>
-                    ) : skill.icon === "gemini" ? (
-                      <span className="text-2xl">✨</span>
-                    ) : (
-                      <img
-                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-original.svg`}
-                        alt={skill.name}
-                        className="w-8 h-8"
-                      />
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">
-                      {skill.name}
-                    </h3>
-                    <span className="text-purple-400 text-sm">
-                      {skill.level}% proficiency
+                {/* Category label */}
+                <span className="text-[11px] uppercase tracking-[0.2em] text-gray-600 font-semibold w-40 shrink-0 pt-0.5">
+                  {group.category}
+                </span>
+
+                {/* Pills */}
+                <div className="flex flex-wrap gap-2.5">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3.5 py-1.5 text-[13px] font-medium text-gray-400 border border-white/[0.08] rounded-full hover:border-white/20 hover:text-gray-200 transition-all duration-200 cursor-default"
+                    >
+                      {item}
                     </span>
-                  </div>
-                </div>
-                <div className="w-full bg-gray-800 rounded-full h-2">
-                  <div
-                    className={`h-2 rounded-full ${
-                      skill.level > 75
-                        ? "bg-gradient-to-r from-green-500 to-teal-400"
-                        : skill.level > 50
-                        ? "bg-gradient-to-r from-blue-500 to-purple-400"
-                        : "bg-gradient-to-r from-yellow-500 to-orange-400"
-                    }`}
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
+                  ))}
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          {/* Resume Section */}
+          {/* Resume download strip */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mt-24 text-center bg-[#1c1c2c]/60 backdrop-blur-sm p-8 rounded-xl border border-gray-700"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-16 sm:mt-20 pt-10 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
           >
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Want to know more about my professional journey?
-            </h3>
-            <p className="text-gray-400 max-w-2xl mx-auto mb-6">
-              Download my resume to explore my full experience, education, and
-              projects in detail.
-            </p>
-            <motion.a
-              href={RESUME_DOWNLOAD_LINK}
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-1">
+                Want to know more about my professional journey?
+              </h3>
+              <p className="text-sm text-gray-600">
+                Explore my experience, education and full project history in detail.
+              </p>
+            </div>
+            <Link
+              href={RESUME_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group shrink-0 inline-flex items-center gap-2.5 px-6 py-3 text-[13px] font-medium text-white border border-white/15 rounded-full hover:border-white/35 hover:bg-white/4 transition-all duration-200 whitespace-nowrap"
             >
-              <FaDownload className="mr-2" />
-              Download & View Resume
-            </motion.a>
-            {/* <p className="text-gray-500 text-sm mt-4">
-            (PDF file will open in new tab)
-          </p> */}
+              Download Resume
+              <svg className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            </Link>
           </motion.div>
         </div>
-        <WorkTogether />
       </section>
+
+      {/* ═══════════════════════════════════════════
+           CONTACT CTA (cinematic full-width)
+      ═══════════════════════════════════════════ */}
+      <section className="bg-[#080808] py-24 sm:py-36 relative overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+        {/* Faint glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-[120px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-[11px] uppercase tracking-[0.22em] text-gray-600 font-semibold mb-6">
+              Let's collaborate
+            </p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight max-w-3xl mx-auto">
+              Let's Build Something
+              <br />
+              <span className="text-gray-600 font-light italic">Amazing Together</span>
+            </h2>
+            <p className="mt-6 text-[15px] text-gray-500 max-w-lg mx-auto leading-relaxed">
+              Have an idea, product or project in mind? Let's turn it into something
+              useful, scalable and impactful.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 bg-white text-black text-[13px] font-semibold rounded-full hover:bg-gray-100 transition-all duration-200 shadow-xl shadow-white/10"
+              >
+                Schedule a Call
+                <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <a
+                href="mailto:610490papu@gmail.com"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-[13px] font-medium text-gray-400 hover:text-white border border-white/10 hover:border-white/25 rounded-full transition-all duration-200"
+              >
+                Email Me
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <WorkTogether />
     </>
   );
 };
 
-export default Skills;
+export default SkillsSection;

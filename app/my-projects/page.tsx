@@ -6,6 +6,31 @@ import { WorkTogether } from "@/components/WorkTogether";
 
 const projects = [
   {
+    title: "CloudLens — Cloud Cost Intelligence Platform",
+    description:
+      "SaaS platform to monitor real-time GCP cloud spending. Provides project-level cost insights & analytics dashboards.",
+    technologies: [
+      "Next.js",
+      "Supabase",
+      "BigQuery",
+    ],
+    link: "#",
+    icon: "🌩️",
+  },
+  {
+    title: "AI Video Automation Platform",
+    description:
+      "Built an AI-powered video automation system handling 1000+ daily requests. Automated multi-channel ad content generation and delivery. Integrated AI models to optimize workflows and improve content generation speed.",
+    technologies: [
+      "FastAPI",
+      "Python",
+      "AI Models",
+      "Automation",
+    ],
+    link: "#",
+    icon: "🎬",
+  },
+  {
     title: "My Portfolio - Digital Showcase",
     description:
       "A sleek developer portfolio showcasing my skills and projects. Built with modern technologies for optimal performance and aesthetics.",

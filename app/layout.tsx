@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-// Alternative font import (use this if geist/font fails)
-import { Inter } from "next/font/google";
-
+import { Afacad_Flux } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer"; // Import the Footer component
+import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const afacadFlux = Afacad_Flux({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Pappu Kumar Yadav | Full Stack Developer",
-  description: "MERN Stack Developer Portfolio",
+  description: "Full Stack Developer · SaaS · AI Systems · Scalable Web Applications",
 };
 
 export default function RootLayout({
@@ -21,11 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* Use either Geist or Inter font */}
-      <body className={inter.className}>
-        {/* Fallback to Inter */}
-        {/* OR if you get Geist working: */}
-        {/* <body className={`${GeistSans.variable} ${GeistMono.variable}`}> */}
+      <body className={afacadFlux.className}>
         <Navbar />
         {children}
         <Footer />

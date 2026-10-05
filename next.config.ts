@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    ignoreDuringBuilds: true, // ✅ disables linting errors during production build
+    ignoreDuringBuilds: true,
+  },
+  images: {
+    qualities: [75, 90, 100],
   },
 }
 

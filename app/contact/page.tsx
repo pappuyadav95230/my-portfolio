@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import {
   FiMail,
   FiPhone,
@@ -11,6 +12,22 @@ import { FaWhatsapp, FaLinkedinIn, FaGithub, FaTelegram } from "react-icons/fa";
 import { WorkTogether } from "@/components/WorkTogether";
 
 const Contact = () => {
+  const [mounted, setMounted] = useState(false);
+  const [randomValues, setRandomValues] = useState<{ duration: number; width: number; height: number; left: number; top: number; }[]>([]);
+
+  useEffect(() => {
+    setMounted(true);
+    setRandomValues(
+      [...Array(12)].map(() => ({
+        duration: Math.random() * 30 + 20,
+        width: Math.random() * 300 + 100,
+        height: Math.random() * 300 + 100,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+      }))
+    );
+  }, []);
+
   const socialLinks = [
     { icon: <FaLinkedinIn />, url: "#", name: "LinkedIn" },
     { icon: <FaGithub />, url: "#", name: "GitHub" },
@@ -23,30 +40,32 @@ const Contact = () => {
       className="relative py-32 md:py-32 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-hidden"
     >
       {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              x: [0, 100, 0],
-              y: [0, 50, 0],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: Math.random() * 30 + 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20"
-            style={{
-              width: Math.random() * 300 + 100,
-              height: Math.random() * 300 + 100,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
+      {mounted && (
+        <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
+          {randomValues.map((val, i) => (
+            <motion.div
+              key={i}
+              animate={{
+                x: [0, 100, 0],
+                y: [0, 50, 0],
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: val.duration,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20"
+              style={{
+                width: val.width,
+                height: val.height,
+                left: `${val.left}%`,
+                top: `${val.top}%`,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-24">
         {/* Section Header */}

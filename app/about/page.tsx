@@ -149,7 +149,7 @@ const About = () => {
                     transition={{ delay: 0.5 }}
                     className="text-gray-300 text-lg leading-relaxed"
                   >
-                    I'm a passionate Full Stack Developer with expertise in building modern web applications. My journey in web development combines technical skills with creative problem-solving.
+                    Full-Stack Developer with 2+ years of experience building scalable SaaS platforms, AI-driven automation systems, and high-performance web applications.
                   </motion.p>
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
@@ -157,7 +157,7 @@ const About = () => {
                     transition={{ delay: 0.6 }}
                     className="text-gray-300 text-lg leading-relaxed"
                   >
-                    Currently at <span className="text-indigo-400 font-medium">Alphanumeric Ideas Pvt. Ltd.</span>, I lead development of innovative digital solutions that drive business growth and user engagement.
+                    Currently at <span className="text-indigo-400 font-medium">OCEANIEK TECHNOLOGIES</span>, I lead the development of innovative digital solutions that drive business growth and optimize content workflows.
                   </motion.p>
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
@@ -165,7 +165,7 @@ const About = () => {
                     transition={{ delay: 0.7 }}
                     className="text-gray-300 text-lg leading-relaxed"
                   >
-                    My approach focuses on clean architecture, performance optimization, and creating intuitive interfaces that users love.
+                    Skilled in <span className="text-white font-medium">React, Next.js, FastAPI, and Google Cloud</span>, with hands-on experience in designing production systems, analytics dashboards, and integrating LLMs for real-world applications.
                   </motion.p>
                 </div>
               </div>
