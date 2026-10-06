@@ -34,18 +34,17 @@ const Navbar = () => {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 inset-x-0 z-50 hidden md:flex items-center transition-all duration-400 ${
-          scrolled
-            ? "bg-[#060606]/95 backdrop-blur-xl h-[76px]"
-            : "bg-transparent h-[90px]"
-        }`}
+        className={`fixed top-0 inset-x-0 z-50 hidden md:flex items-center transition-all duration-400 ${scrolled
+          ? "bg-[#060606]/95 backdrop-blur-xl h-[76px]"
+          : "bg-transparent h-[90px]"
+          }`}
       >
         <div className="w-full max-w-7xl mx-auto px-10 lg:px-16 flex items-center justify-between">
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <img
-              src="/icons/white.png"
+              src="/pappu-logo.png"
               alt="The Pappu way"
               className="h-[72px] w-auto object-contain opacity-95 hover:opacity-100 transition-opacity duration-200"
             />
@@ -57,18 +56,16 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`relative text-[16px] font-semibold tracking-wide transition-colors duration-200 group pb-0.5 ${
-                  pathname === item.href
-                    ? "text-white"
-                    : "text-gray-400 hover:text-white"
-                }`}
+                className={`relative text-[16px] font-semibold tracking-wide transition-colors duration-200 group pb-0.5 ${pathname === item.href
+                  ? "text-white"
+                  : "text-gray-400 hover:text-white"
+                  }`}
               >
                 {item.name}
                 {/* Active underline */}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[2px] rounded-full bg-white transition-all duration-300 ${
-                    pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
+                  className={`absolute -bottom-1 left-0 h-[2px] rounded-full bg-white transition-all duration-300 ${pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
                 />
               </Link>
             ))}
@@ -94,11 +91,10 @@ const Navbar = () => {
       {/* ══════════ MOBILE ══════════ */}
       <div className="md:hidden fixed top-0 inset-x-0 z-50">
         <div
-          className={`flex items-center justify-between px-5 h-[64px] transition-all duration-300 ${
-            isOpen || scrolled
-              ? "bg-[#060606]/95 backdrop-blur-xl"
-              : "bg-transparent"
-          }`}
+          className={`flex items-center justify-between px-5 h-[64px] transition-all duration-300 ${isOpen || scrolled
+            ? "bg-[#060606]/95 backdrop-blur-xl"
+            : "bg-transparent"
+            }`}
         >
           <Link href="/" onClick={close}>
             <img
@@ -135,9 +131,8 @@ const Navbar = () => {
                     <Link
                       href={item.href}
                       onClick={close}
-                      className={`text-xl font-semibold block transition-colors ${
-                        pathname === item.href ? "text-white" : "text-gray-500 hover:text-white"
-                      }`}
+                      className={`text-xl font-semibold block transition-colors ${pathname === item.href ? "text-white" : "text-gray-500 hover:text-white"
+                        }`}
                     >
                       {item.name}
                     </Link>

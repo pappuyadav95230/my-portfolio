@@ -55,7 +55,7 @@ const Footer = () => {
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <img
-              src="/icons/white.png"
+              src="/The-Pappu-transparent.png"
               alt="The Pappu way"
               className="h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
             />
