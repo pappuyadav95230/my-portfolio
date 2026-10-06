@@ -32,7 +32,7 @@ const Hero = () => {
             quality={90}
             className="object-cover object-top"
             style={{
-              filter: "grayscale(100%) contrast(1.2) brightness(0.85)",
+              filter: "grayscale(100%) contrast(1.15) brightness(1.1)",
             }}
             sizes="46vw"
           />
@@ -89,12 +89,12 @@ const Hero = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.12 }}
-              className="font-black leading-[1.05] tracking-tight text-white"
+              className="font-black leading-[1.05] tracking-tight text-gray-200"
               style={{ fontSize: "clamp(2.8rem, 5.5vw, 5.5rem)" }}
             >
               Turning Ideas into
               <br />
-              Digital Solutions
+              <span className="text-gray-400">Digital Solutions</span>
             </motion.h1>
 
             {/* Description */}
