@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import SkillsSection from "@/components/SkillsSection";
+import { HomeContent } from "@/components/HomeContent";
 
 const STATS = [
-  { value: "3+", label: "Years Experience" },
-  { value: "10+", label: "Projects" },
-  { value: "Full Stack + AI", label: "" },
+  { value: "8+", label: "Production Releases" },
+  { value: "AWS/GCP", label: "Cloud Platforms" },
+  { value: "80%", label: "Cost Reduction" },
 ];
 
 const Hero = () => {
@@ -79,9 +80,10 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="text-[11px] uppercase tracking-[0.24em] text-gray-500 font-bold mb-5"
+              className="text-[11px] uppercase tracking-[0.24em] text-gray-500 font-bold mb-5 flex items-center gap-2"
             >
-              Full Stack Developer
+              <span className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse" />
+              Full Stack Developer &nbsp;&middot;&nbsp; Oceaniek Technologies
             </motion.p>
 
             {/* Headline */}
@@ -89,12 +91,12 @@ const Hero = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.12 }}
-              className="font-black leading-[1.05] tracking-tight text-gray-200"
+              className="font-black leading-[1.05] tracking-tight text-white"
               style={{ fontSize: "clamp(2.8rem, 5.5vw, 5.5rem)" }}
             >
               Turning Ideas into
               <br />
-              <span className="text-gray-400">Digital Solutions</span>
+              <span className="text-white/80">Digital Solutions</span>
             </motion.h1>
 
             {/* Description */}
@@ -102,10 +104,11 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.22 }}
-              className="mt-5 text-[15px] text-gray-400 leading-[1.8] max-w-[420px]"
+              className="mt-5 text-[15px] text-gray-400 leading-[1.8] max-w-[460px]"
             >
-              I build scalable web applications, SaaS products, AI-powered
-              systems and modern digital experiences.
+              Full Stack Developer with 3+ years building SaaS platforms,
+              AI-integrated automation pipelines, advertising analytics,
+              and production systems used by real businesses daily.
             </motion.p>
 
             {/* CTAs */}
@@ -156,6 +159,50 @@ const Hero = () => {
         </div>
       </section>
 
+      {/* ── TRUST / SOCIAL PROOF STRIP ── */}
+      <section className="bg-[#080808] border-t border-b border-white/[0.04] py-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8 lg:px-14">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+
+            {/* Left: "Trusted by real production" label */}
+            <p className="text-[11px] uppercase tracking-[0.22em] text-gray-600 font-bold shrink-0 whitespace-nowrap">
+              Built for production
+            </p>
+
+            {/* Divider */}
+            <div className="hidden sm:block w-px h-5 bg-white/[0.08] shrink-0" />
+
+            {/* Center: Quick stats */}
+            <div className="flex items-center gap-6 sm:gap-10 flex-wrap justify-center">
+              {[
+                { value: "8+", label: "Releases Shipped" },
+                { value: "AWS/GCP", label: "Cloud Architecture" },
+                { value: "80%", label: "Cost Reduction" },
+                { value: "Next.js + FastAPI", label: "Core Stack" },
+                { value: "Gemini AI", label: "LLM Integration" },
+              ].map((s) => (
+                <div key={s.value} className="flex items-center gap-2">
+                  <span className="text-[13px] font-black text-white/70">{s.value}</span>
+                  <span className="text-[11px] text-gray-600 hidden sm:inline">{s.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Divider */}
+            <div className="hidden sm:block w-px h-5 bg-white/[0.08] shrink-0" />
+
+            {/* Right: Availability */}
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] text-emerald-400/80 font-semibold uppercase tracking-wider whitespace-nowrap">
+                Available for hire
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <HomeContent />
       <SkillsSection />
     </>
   );
