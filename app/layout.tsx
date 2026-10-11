@@ -11,8 +11,8 @@ const afacadFlux = Afacad_Flux({
 });
 
 export const metadata: Metadata = {
-  title: "Pappu Kumar Yadav | Full Stack Developer",
-  description: "Full Stack Developer · SaaS · AI Systems · Scalable Web Applications",
+  title: "Pappu Kumar Yadav | Full-Stack Developer & Tech Partner",
+  description: "Full-Stack Developer building Custom Web Apps, DevOps & Cloud Deployments (AWS/GCP), Backend/Frontend, and AI Automations for businesses.",
 };
 
 export default function RootLayout({

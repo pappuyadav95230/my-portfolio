@@ -6,17 +6,32 @@ import { FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaUsers } from "
 const experiences = [
   {
     side: "left",
-    title: "Web Developer",
-    company: "Alphanumeric Ideas Pvt. Ltd.",
-    period: "Jan 2024 – Present",
+    title: "Full-Stack Developer",
+    company: "Oceaniek Technologies",
+    period: "2024 – Present",
     details: [
-      "Contributed to front-end and back-end development for diverse projects.",
-      "Enhanced user experience and optimized design for performance."
+      "Architected, developed & managed Oceaniek Stream (oceaniekstream.com) — commercial OTT streaming platform with video delivery, subscriber auth, and catalog infrastructure.",
+      "Shipped ODI Studio (odi.studio) e-commerce with custom auth, Razorpay payments, and Delhivery logistics APIs.",
+      "Engineered ShipOnEarth (shiponearth.online) maritime vessel tracking with Mapbox GL and live telemetry.",
+      "Developed an Enterprise Hospital Information System (HIS) with full IPD, OPD, pathology, and doctor/admin dashboards."
     ],
-    icon: <FaBriefcase className="text-blue-400" />
+    icon: <FaBriefcase className="text-emerald-400" />
   },
   {
     side: "right",
+    title: "Full Stack Developer",
+    company: "Alphanumeric Ideas Pvt. Ltd.",
+    period: "Jan 2024 – 2026",
+    details: [
+      "Shipped 8 production releases utilizing Next.js, TypeScript, and Python FastAPI.",
+      "Architected AI video automation serving 1,000+ daily ads across Facebook & Instagram.",
+      "Engineered multi-query GAQL analytics dashboards for Google Ads API.",
+      "Deployed containerized backends on GCP Cloud Run and integrated local LLM pipelines."
+    ],
+    icon: <FaBriefcase className="text-emerald-400" />
+  },
+  {
+    side: "left",
     title: "Web Developer Executive Intern",
     company: "Alphanumeric Ideas Pvt. Ltd.",
     period: "Sep 2023 – Jan 2024",
@@ -25,10 +40,10 @@ const experiences = [
       "Enhanced SEO by optimizing sitemaps.",
       "Maintained and improved company products."
     ],
-    icon: <FaBriefcase className="text-blue-400" />
+    icon: <FaBriefcase className="text-emerald-400" />
   },
   {
-    side: "left",
+    side: "right",
     title: "Python Developer Intern",
     company: "Softwizz Pvt. Ltd.",
     period: "Jul 2022 – Aug 2022",

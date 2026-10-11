@@ -1,293 +1,236 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   FiCode,
-  FiDatabase,
   FiCloud,
-  FiSmartphone,
-  FiLayers,
-  FiZap,
-  FiTrendingUp,
-  FiSettings,
   FiCpu,
-  FiServer,
-  FiGlobe,
-  FiShield,
+  FiVideo,
+  FiCheckCircle,
+  FiArrowUpRight,
+  FiPhone,
+  FiDollarSign,
+  FiZap,
 } from "react-icons/fi";
-import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
-import { WorkTogether } from "@/components/WorkTogether";
 
-const services = [
+const BUSINESS_SERVICES = [
   {
-    icon: <FiCode className="w-8 h-8" />,
-    title: "Frontend Development",
+    icon: <FiCode className="w-7 h-7 text-emerald-400" />,
+    badge: "Full-Stack Development",
+    title: "Custom Web Applications & E-Commerce",
+    subtitle: "Built for Your Exact Business Needs",
     description:
-      "Building modern, responsive UIs with Next.js, React, TypeScript, and Tailwind CSS. Creating pixel-perfect, SEO-optimized interfaces with exceptional user experiences.",
-    color: "from-purple-500 to-indigo-500",
+      "From high-conversion e-commerce stores (like ODI Studio with Razorpay and automated shipping) to custom booking marketplaces and hospital ERPs. Fast, SEO-optimized, and built to convert visitors into paying clients.",
+    deliverables: [
+      "Custom Web Applications & Portals",
+      "E-Commerce with Razorpay Checkout",
+      "Logistics & Delivery API Integrations",
+      "Admin, Doctor, or Manager Dashboards",
+    ],
   },
   {
-    icon: <FiServer className="w-8 h-8" />,
-    title: "Backend Development",
+    icon: <FiCloud className="w-7 h-7 text-emerald-400" />,
+    badge: "Cloud DevOps & Hosting",
+    title: "Domain, Cloud Hosting & Deployments",
+    subtitle: "Fast, Secure & Always Online",
     description:
-      "Robust server-side solutions with Node.js, Express.js, and Python Flask. Developing secure REST APIs, authentication systems, and scalable server architectures.",
-    color: "from-blue-500 to-cyan-500",
+      "I set up your business domain, SSL security, and host your platforms on AWS or Google Cloud Run. Auto-scaling, automated backups, and 80% infrastructure cost savings so you never overpay for servers.",
+    deliverables: [
+      "AWS & GCP Cloud Setup & Migration",
+      "Domain Setup & Free SSL Certificates",
+      "Automated Database Backups",
+      "80% Server Cost Optimization",
+    ],
   },
   {
-    icon: <FiDatabase className="w-8 h-8" />,
-    title: "Database Solutions",
+    icon: <FiCpu className="w-7 h-7 text-emerald-400" />,
+    badge: "AI Automation",
+    title: "AI Workflows & Business Automation",
+    subtitle: "Put Your Business Operations on Autopilot",
     description:
-      "Expert database design and optimization using MongoDB, MySQL, PostgreSQL, Google Cloud Spanner, and Firebase. Ensuring data integrity, performance, and scalability.",
-    color: "from-green-500 to-teal-500",
+      "Eliminate repetitive manual tasks. Connect your website to custom AI lead responders, automated WhatsApp/Email follow-ups, and auto-sync inquiries into your CRM or Google Sheets in real-time.",
+    deliverables: [
+      "AI Customer Support & Lead Qualifiers",
+      "WhatsApp & Email Automated Follow-ups",
+      "CRM & Google Sheets Real-Time Sync",
+      "Custom Model Training & Vision OCR",
+    ],
   },
   {
-    icon: <FiCloud className="w-8 h-8" />,
-    title: "Cloud & DevOps",
+    icon: <FiVideo className="w-7 h-7 text-emerald-400" />,
+    badge: "Performance Marketing",
+    title: "Video Ads & Meta / Google Campaigns",
+    subtitle: "High-ROI Creative Strategy & Traffic",
     description:
-      "Full cloud infrastructure management on Google Cloud Platform. Deploying applications with Cloud Run, Firebase Hosting, Docker, and Kubernetes for production-ready solutions.",
-    color: "from-orange-500 to-red-500",
-  },
-  {
-    icon: <FiCpu className="w-8 h-8" />,
-    title: "AI Integration & Automation",
-    description:
-      "Implementing cutting-edge AI solutions with Gemini AI API and OpenAI integration. Automating business processes to reduce manual effort by ~40% and boost productivity.",
-    color: "from-pink-500 to-rose-500",
-  },
-  {
-    icon: <FiLayers className="w-8 h-8" />,
-    title: "Full-Stack Development",
-    description:
-      "End-to-end application development combining frontend and backend expertise. Building complete SaaS products, authentication flows, and analytics dashboards.",
-    color: "from-yellow-500 to-amber-500",
-  },
-  {
-    icon: <FiTrendingUp className="w-8 h-8" />,
-    title: "Performance Optimization",
-    description:
-      "Optimizing application performance, SEO, and user experience. Implementing best practices for fast loading times, scalability, and system reliability.",
-    color: "from-emerald-500 to-lime-500",
-  },
-  {
-    icon: <FiSettings className="w-8 h-8" />,
-    title: "Tech Consulting & Integration",
-    description:
-      "Strategic technology consulting and seamless integration of new tech stacks. Modernizing legacy systems and implementing innovative solutions for business growth.",
-    color: "from-indigo-500 to-purple-500",
+      "Having built ad automation handling 1,000+ daily creatives with the Google Ads API, I help Indian and global businesses run profitable video ads on Instagram, Facebook, and Google to drive qualified leads.",
+    deliverables: [
+      "AI-Generated High-Converting Video Ads",
+      "Google Ads & Meta Campaign Management",
+      "High-Converting Landing Pages",
+      "GAQL Analytics & Conversion Tracking",
+    ],
   },
 ];
 
-const Services = () => {
-  return (
-    <section
-      id="services"
-      className="relative py-32 bg-gradient-to-b from-[#0f0f1a] via-[#141421] to-[#0f0f1a] overflow-hidden"
-    >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-10">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              x: [0, 100, 0],
-              y: [0, 50, 0],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: Math.random() * 20 + 10,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute w-2 h-2 bg-purple-400 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
+const PROCESS_STEPS = [
+  {
+    step: "01",
+    title: "Free Consultation & Scoping",
+    desc: "We discuss your business needs, goals, and target audience to define the exact deliverables and timeline.",
+  },
+  {
+    step: "02",
+    title: "Design & Development",
+    desc: "I build your web app, integrate payment gateways and APIs, with regular staging previews so you see progress live.",
+  },
+  {
+    step: "03",
+    title: "Cloud Deployment & Automation",
+    desc: "Your app goes live on AWS/GCP with custom domains, SSL, and automated lead capture pipelines.",
+  },
+  {
+    step: "04",
+    title: "Launch & Campaign Growth",
+    desc: "We launch video ads and marketing campaigns to send real customers to your new platform with ongoing support.",
+  },
+];
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 mb-24">
-        {/* Section Header */}
+export const Services = () => {
+  return (
+    <div className="bg-[#0a0a0a] min-h-screen text-white pt-28 sm:pt-36 pb-20 relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-emerald-500/[0.02] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-40 left-10 w-[600px] h-[600px] bg-white/[0.015] blur-[130px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+
+        {/* ── HEADER ── */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-16 sm:mb-20"
         >
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
-              Services
-            </span>{" "}
-            I Offer
-          </motion.h2>
-          <motion.p
-            className="text-lg text-gray-400 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            With 2+ years of experience handling 10-12 large-scale projects for
-            major clients, I specialize in building features from scratch and
-            integrating cutting-edge technologies to drive business growth and
-            operational efficiency.
-          </motion.p>
-          <motion.div
-            className="w-24 h-1.5 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-8 rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-          />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 mb-6">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-widest">
+              End-to-End Business Solutions
+            </span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-white">
+            Digital Agency Services for{" "}
+            <span className="text-emerald-400">Growing Businesses</span>
+          </h1>
+
+          <p className="mt-5 text-[15px] sm:text-[16px] text-gray-400 leading-relaxed">
+            I help businesses in India and across the world build custom web applications, deploy on high-performance cloud hosting, automate operations with AI, and scale with high-converting video ad campaigns.
+          </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.3,
-              },
-            },
-          }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-        >
-          {services.map((service, index) => (
+        {/* ── SERVICES GRID ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 sm:mb-32">
+          {BUSINESS_SERVICES.map((s, idx) => (
             <motion.div
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10,
-                  },
-                },
-              }}
-              whileHover={{ y: -10 }}
-              className={`bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 hover:shadow-lg transition-all duration-300 group relative overflow-hidden`}
+              key={s.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              className="p-8 sm:p-10 rounded-2xl bg-[#0d0d0d] border border-white/[0.07] hover:border-emerald-500/40 hover:bg-[#101010] transition-all duration-300 group flex flex-col justify-between"
             >
-              {/* Gradient overlay */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-              ></div>
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center group-hover:border-emerald-500/30 group-hover:bg-emerald-500/10 transition-colors">
+                    {s.icon}
+                  </div>
+                  <span className="px-3 py-1 text-[11px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 rounded-full uppercase tracking-wider">
+                    {s.badge}
+                  </span>
+                </div>
 
-              {/* Icon with gradient background */}
-              <div
-                className={`mb-6 p-3 rounded-lg bg-gradient-to-br ${service.color} w-14 h-14 flex items-center justify-center text-white`}
+                <h2 className="text-2xl font-bold text-white tracking-tight">{s.title}</h2>
+                <p className="text-[13px] text-emerald-400 font-medium mt-1 mb-4">{s.subtitle}</p>
+                <p className="text-[14px] text-gray-400 leading-relaxed mb-6">{s.description}</p>
+
+                <div className="space-y-2.5 pt-4 border-t border-white/[0.06] mb-8">
+                  {s.deliverables.map((d, i) => (
+                    <div key={i} className="flex items-center gap-2.5 text-[13px] text-gray-300">
+                      <FiCheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>{d}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 w-full py-3 px-5 rounded-xl bg-white/[0.03] hover:bg-white text-gray-300 hover:text-black font-bold text-[13px] border border-white/10 hover:border-white transition-all duration-200"
               >
-                {service.icon}
-              </div>
-
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {service.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                {service.description}
-              </p>
-
-              <div className="flex items-center text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
-                Learn more <FaArrowRight className="ml-2" />
-              </div>
+                <span>Inquire About This Service</span>
+                <FiArrowUpRight className="w-4 h-4" />
+              </Link>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-20"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-            Ready to bring your digital vision to life?
-          </h3>
-          <motion.a
-            href="/contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            Get in Touch
-            <FaArrowRight className="ml-2" />
-          </motion.a>
-        </motion.div>
-
-        {/* Social Media Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <h4 className="text-xl font-semibold text-white mb-6">
-            Connect With Me
-          </h4>
-          <div className="flex justify-center space-x-6">
-            <motion.a
-              href="https://github.com/pappuyadav95230"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center w-12 h-12 bg-gray-800 hover:bg-gray-700 text-white rounded-full transition-all duration-300"
-            >
-              <FaGithub className="w-5 h-5" />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/pappu-kumar-yadav"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center w-12 h-12 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all duration-300"
-            >
-              <FaLinkedin className="w-5 h-5" />
-            </motion.a>
-            <motion.a
-              href="https://leetcode.com/u/Pappu_95230/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center w-12 h-12 bg-orange-600 hover:bg-orange-500 text-white rounded-full transition-all duration-300"
-            >
-              <SiLeetcode className="w-5 h-5" />
-            </motion.a>
-            <motion.a
-              href="mailto:610490papu@gmail.com"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center w-12 h-12 bg-red-600 hover:bg-red-500 text-white rounded-full transition-all duration-300"
-            >
-              <FaEnvelope className="w-5 h-5" />
-            </motion.a>
+        {/* ── HOW WE WORK TOGETHER ── */}
+        <div className="mb-24 sm:mb-32 p-8 sm:p-12 lg:p-14 rounded-3xl bg-[#0e0e0e] border border-white/[0.08]">
+          <div className="max-w-3xl mb-12">
+            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-widest block mb-3">
+              Transparent Process
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+              From Concept to Profitable Launch
+            </h2>
+            <p className="mt-3 text-[15px] text-gray-400 leading-relaxed">
+              No endless meetings, no agency bureaucracy. Just fast, predictable execution with direct updates.
+            </p>
           </div>
-        </motion.div>
-      </div>
 
-      <WorkTogether />
-    </section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PROCESS_STEPS.map((step) => (
+              <div key={step.step} className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                <span className="text-3xl font-black text-emerald-400/80 leading-none block mb-3">
+                  {step.step}
+                </span>
+                <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+                <p className="text-[13px] text-gray-400 leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── CALL TO ACTION ── */}
+        <div className="p-8 sm:p-12 lg:p-14 rounded-3xl bg-gradient-to-br from-[#111111] to-[#0c0c0c] border border-white/[0.08] hover:border-emerald-500/40 text-center relative overflow-hidden transition-all">
+          <div className="max-w-2xl mx-auto relative z-10">
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+              Need a Web App, Cloud Hosting, or Video Ads for Your Business?
+            </h2>
+            <p className="text-[15px] text-gray-400 leading-relaxed mb-8">
+              Let&apos;s discuss your project scope, budget, and timeline. Get a free proposal within 24 hours.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-bold text-[14px] hover:bg-gray-100 transition-all shadow-lg shadow-white/5"
+              >
+                Hire Me Today &rarr;
+              </Link>
+              <a
+                href="tel:+919523076954"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-gray-300 hover:text-white hover:bg-white/[0.04] text-[14px] font-medium transition-all"
+              >
+                <FiPhone className="w-4 h-4 text-emerald-400" />
+                +91 95230 76954
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   );
 };
 

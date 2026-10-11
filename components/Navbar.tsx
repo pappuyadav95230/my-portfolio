@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -18,10 +18,32 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isScrolledRef = useRef(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    let ticking = false;
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isPastThreshold = window.scrollY > 25;
+          if (isPastThreshold !== isScrolledRef.current) {
+            isScrolledRef.current = isPastThreshold;
+            setScrolled(isPastThreshold);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Check initial position on mount
+    if (window.scrollY > 25) {
+      isScrolledRef.current = true;
+      setScrolled(true);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -30,82 +52,91 @@ const Navbar = () => {
   return (
     <>
       {/* ══════════ DESKTOP ══════════ */}
-      <motion.header
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-0 inset-x-0 z-50 hidden md:flex items-center transition-all duration-400 ${scrolled
-          ? "bg-[#060606]/95 backdrop-blur-xl h-[76px]"
-          : "bg-transparent h-[90px]"
-          }`}
+      <header
+        className={`fixed top-0 inset-x-0 z-50 hidden md:flex items-center h-[82px] transition-[background-color,border-color,box-shadow] duration-200 will-change-[background-color,border-color] ${
+          scrolled
+            ? "bg-[#060606]/90 backdrop-blur-md border-b border-white/[0.08] shadow-lg shadow-black/40"
+            : "bg-transparent border-b border-transparent"
+        }`}
       >
         <div className="w-full max-w-7xl mx-auto px-10 lg:px-16 flex items-center justify-between">
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <img
-              src="/pappu-logo.png"
-              alt="The Pappu way"
-              className="h-[72px] w-auto object-contain opacity-95 hover:opacity-100 transition-opacity duration-200"
+              src="/Pappuway.png"
+              alt="Pappu Way"
+              className="h-[54px] w-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
             />
           </Link>
 
           {/* Nav links */}
-          <nav className="flex items-center gap-10">
+          <nav className="flex items-center gap-7 lg:gap-9">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`relative text-[16px] font-semibold tracking-wide transition-colors duration-200 group pb-0.5 ${pathname === item.href
-                  ? "text-white"
-                  : "text-gray-400 hover:text-white"
-                  }`}
+                className={`relative text-[16px] lg:text-[17px] font-bold tracking-[0.02em] py-1.5 transition-colors duration-150 group ${
+                  pathname === item.href
+                    ? "text-white"
+                    : "text-gray-300 hover:text-white"
+                }`}
               >
                 {item.name}
-                {/* Active underline */}
+                {/* Active indicator */}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[2px] rounded-full bg-white transition-all duration-300 ${pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
+                  className={`absolute bottom-0 left-0 h-[2.5px] rounded-full transition-all duration-200 ${
+                    pathname === item.href
+                      ? "w-full bg-emerald-400"
+                      : "w-0 group-hover:w-full bg-white/80"
+                  }`}
                 />
               </Link>
             ))}
           </nav>
 
-          {/* Hire Me CTA */}
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 px-7 py-3 text-[15px] font-bold text-black bg-white rounded-full hover:bg-gray-100 active:scale-95 transition-all duration-200"
-          >
-            Hire Me
-            <svg
-              className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
-              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+          {/* Action CTA: Hire Me */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2.5 px-7 py-3 text-[15px] font-bold text-black bg-white rounded-full hover:bg-gray-100 hover:scale-[1.02] active:scale-95 transition-all duration-150 shadow-md shadow-white/10"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+              Hire Me
+              <svg
+                className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
 
         </div>
-      </motion.header>
+      </header>
 
       {/* ══════════ MOBILE ══════════ */}
       <div className="md:hidden fixed top-0 inset-x-0 z-50">
         <div
-          className={`flex items-center justify-between px-5 h-[64px] transition-all duration-300 ${isOpen || scrolled
-            ? "bg-[#060606]/95 backdrop-blur-xl"
-            : "bg-transparent"
-            }`}
+          className={`flex items-center justify-between px-5 h-[64px] transition-[background-color,border-color] duration-200 ${
+            isOpen || scrolled
+              ? "bg-[#060606]/95 backdrop-blur-md border-b border-white/[0.08]"
+              : "bg-transparent border-b border-transparent"
+          }`}
         >
           <Link href="/" onClick={close}>
             <img
-              src="/icons/white.png"
-              alt="The Pappu way"
+              src="/Pappuway.png"
+              alt="Pappu Way"
               className="h-12 w-auto object-contain opacity-95"
             />
           </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white p-1.5 rounded-lg hover:bg-white/8 transition-colors"
+            className="text-white p-2 rounded-lg hover:bg-white/8 transition-colors cursor-pointer"
+            aria-label="Toggle mobile menu"
           >
             {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
           </button>
@@ -117,34 +148,34 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25 }}
-              className="bg-[#060606]/98 backdrop-blur-2xl overflow-hidden"
+              transition={{ duration: 0.2 }}
+              className="bg-[#060606]/98 backdrop-blur-xl border-b border-white/[0.08] overflow-hidden"
             >
-              <div className="px-6 py-8 flex flex-col gap-6">
-                {navItems.map((item, i) => (
-                  <motion.div
+              <div className="px-6 py-7 flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <Link
                     key={item.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    href={item.href}
+                    onClick={close}
+                    className={`text-xl font-bold block transition-colors py-2 ${
+                      pathname === item.href
+                        ? "text-emerald-400"
+                        : "text-gray-300 hover:text-white"
+                    }`}
                   >
-                    <Link
-                      href={item.href}
-                      onClick={close}
-                      className={`text-xl font-semibold block transition-colors ${pathname === item.href ? "text-white" : "text-gray-500 hover:text-white"
-                        }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.div>
+                    {item.name}
+                  </Link>
                 ))}
-                <Link
-                  href="/contact"
-                  onClick={close}
-                  className="mt-4 inline-flex items-center justify-center gap-2 py-3.5 px-6 text-[15px] font-bold text-black bg-white rounded-full w-full"
-                >
-                  Hire Me →
-                </Link>
+
+                <div className="pt-3">
+                  <Link
+                    href="/contact"
+                    onClick={close}
+                    className="inline-flex items-center justify-center gap-2 py-3 px-6 text-[14px] font-bold text-black bg-white rounded-full w-full"
+                  >
+                    Hire Me &rarr;
+                  </Link>
+                </div>
               </div>
             </motion.div>
           )}
