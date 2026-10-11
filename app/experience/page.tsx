@@ -1,405 +1,536 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
-  FaBriefcase,
-  FaGraduationCap,
-  FaCertificate,
-  FaTrophy,
-  FaUsers,
-} from "react-icons/fa";
+  FiBriefcase,
+  FiAward,
+  FiBookOpen,
+  FiCheckCircle,
+  FiArrowUpRight,
+  FiExternalLink,
+  FiLayers,
+  FiTrendingUp,
+  FiTerminal,
+  FiCalendar,
+  FiMapPin,
+} from "react-icons/fi";
 
-const experiences = [
+// ── Work Experiences
+const EXPERIENCES = [
   {
-    side: "left",
-    title: "Web Developer",
-    company: "Alphanumeric Ideas Pvt. Ltd.",
-    period: "Jan 2024 – Present",
-    details: [
-      "Contributed to front-end and back-end development for diverse projects.",
-      "Enhanced user experience and optimized design for performance.",
+    role: "Full-Stack Developer",
+    company: "Oceaniek Technologies",
+    period: "2024 – Present",
+    location: "Remote / Hybrid",
+    type: "Contract & Technical Partner",
+    badge: "Core Engineering Partner",
+    summary:
+      "Leading technical architecture, full-stack product execution, and high-availability deployments across live commercial products.",
+    projects: [
+      {
+        name: "Oceaniek Stream",
+        url: "https://www.oceaniekstream.com/",
+        desc: "Commercial OTT streaming platform with video transcoding, subscriber auth, and content catalog infrastructure.",
+      },
+      {
+        name: "ODI Studio",
+        url: "https://odi.studio/",
+        desc: "Luxury e-commerce with custom auth, Razorpay payments, and automated Delhivery logistics shipping APIs.",
+      },
+      {
+        name: "ShipOnEarth",
+        url: "https://shiponearth.online/",
+        desc: "Maritime vessel intelligence with Mapbox GL, real-time AIS telemetry, and fleet search engine.",
+      },
+      {
+        name: "Hospital Information System (HIS)",
+        desc: "Enterprise hospital management software with full IPD, OPD, pathology, and administrative role portals.",
+      },
     ],
-    icon: <FaBriefcase className="text-blue-400" />,
+    skills: ["Next.js 15", "TypeScript", "Python FastAPI", "Docker", "Node.js", "Payment Gateways", "Live Streaming"],
   },
   {
-    side: "right",
-    title: "Web Developer Executive Intern",
+    role: "Full-Stack Developer",
+    company: "Alphanumeric Ideas Pvt. Ltd.",
+    period: "Jan 2024 – 2026",
+    location: "Ludhiana, India",
+    type: "Full-Time",
+    badge: "8+ Commercial Releases",
+    summary:
+      "Delivered production web platforms, AI ad creative automations, and multi-cloud analytics infrastructure under strict performance budgets.",
+    points: [
+      "Engineered full-stack features using Next.js, React, TypeScript, and high-performance Python FastAPI backends.",
+      "Architected an automated AI video rendering pipeline generating 1,000+ daily creatives for Facebook & Instagram Ads.",
+      "Built high-concurrency GAQL analytics pipelines integrating the Google Ads API to surface real-time video ad telemetry.",
+      "Optimized cloud resource allocation, containerized services with Docker, and slashed operating overhead by up to 80%.",
+    ],
+    skills: ["Next.js", "Python FastAPI", "AI Video Automation", "Google Ads API", "Docker", "PostgreSQL", "Cloud DevOps"],
+  },
+  {
+    role: "Web Developer Executive Intern",
     company: "Alphanumeric Ideas Pvt. Ltd.",
     period: "Sep 2023 – Jan 2024",
-    details: [
-      "Focused on front-end development with responsive designs.",
-      "Enhanced SEO by optimizing sitemaps.",
-      "Maintained and improved company products.",
+    location: "Ludhiana, India",
+    type: "Internship",
+    badge: "Frontend & Performance",
+    summary:
+      "Developed responsive client user interfaces, improved Core Web Vitals, and maintained core customer-facing web products.",
+    points: [
+      "Built responsive, mobile-first web pages using modern HTML5, CSS3, and JavaScript.",
+      "Optimized technical SEO architectures, canonical sitemaps, and Core Web Vitals for production client websites.",
+      "Assisted senior engineers in refactoring legacy components into reusable modular frontend blocks.",
     ],
-    icon: <FaBriefcase className="text-blue-400" />,
+    skills: ["JavaScript", "HTML5/CSS3", "Responsive UI", "SEO Optimization", "Git & GitHub"],
   },
   {
-    side: "left",
-    title: "Python Developer Intern",
+    role: "Python Developer Intern",
     company: "Softwizz Pvt. Ltd.",
     period: "Jul 2022 – Aug 2022",
-    details: [
-      "Created a Library Management System using Tkinter and MySQL.",
-      "Integrated user-friendly forms for issue/return tracking.",
+    location: "Punjab, India",
+    type: "Internship",
+    badge: "Backend & Systems",
+    summary:
+      "Constructed foundational desktop database applications and structured relational schema models.",
+    points: [
+      "Engineered an automated Library Management System with Python Tkinter and MySQL database storage.",
+      "Implemented transactional data models for member issue/return workflows and inventory reporting.",
     ],
-    icon: <FaBriefcase className="text-blue-400" />,
+    skills: ["Python", "Tkinter", "MySQL", "Database Schema Design"],
   },
 ];
 
-const education = [
+// ── Education
+const EDUCATION = [
   {
-    degree: "Bachelor of Technology in Computer Science and Engineering",
+    degree: "B.Tech in Computer Science & Engineering",
     institution: "Shaheed Bhagat Singh State Technical Campus",
-    period: "July 2020 – May 2024",
-    score: "CGPA: 8.01",
-    icon: <FaGraduationCap className="text-blue-400" />,
+    period: "2020 – 2024",
+    grade: "CGPA: 8.01 / 10",
+    summary:
+      "Deep foundation in Data Structures, Algorithms, Database Management Systems, Distributed Systems, Computer Networks, and Cloud Computing.",
   },
   {
-    degree: "12th in BSEB, Patna (State-Board)",
-    institution: "Shaheed Bhagat Singh Inter College",
-    period: "March 2016 – Feb 2018",
-    score: "Percentage: 59.5%",
-    icon: <FaGraduationCap className="text-blue-400" />,
+    degree: "Senior Secondary (Class XII - Science)",
+    institution: "Shaheed Bhagat Singh Inter College (BSEB)",
+    period: "2016 – 2018",
+    grade: "First Division",
+    summary: "Physics, Chemistry, and Advanced Mathematics.",
   },
   {
-    degree: "Class X in BSEB, Patna (State-Board)",
-    institution: "G.J.P High School Sani-basantpur",
-    period: "May 2015",
-    score: "Percentage: 72.4%",
-    icon: <FaGraduationCap className="text-blue-400" />,
+    degree: "Secondary School (Class X)",
+    institution: "G.J.P High School Sani-basantpur (BSEB)",
+    period: "2015",
+    grade: "First Division (72.4%)",
+    summary: "General Sciences, Mathematics, and Computer Studies.",
   },
 ];
 
-const achievements = [
-  {
-    title: "Team Lead in organizing Smart India Hackathon in college",
-    year: "2023",
-    icon: <FaTrophy className="text-yellow-400" />,
-  },
-  {
-    title:
-      "Achieved a 4 star fraternity ranking by the Office of Fraternity and Sorority Affairs (highest possible ranking)",
-    icon: <FaTrophy className="text-yellow-400" />,
-  },
-];
-
-const participation = [
-  {
-    title: "Core member of GDG Ludhiana, managed event focused on Gemini",
-    icon: <FaUsers className="text-green-400" />,
-  },
-  {
-    title: "Google Developer Student Clubs SBSSU 2023",
-    icon: <FaUsers className="text-green-400" />,
-  },
-];
-
-const certifications = [
+// ── Certifications
+const CERTIFICATIONS = [
   {
     title: "Full Stack Web Development",
     issuer: "Apna College",
-    icon: <FaCertificate className="text-purple-400" />,
+    skills: "Next.js, React, Node.js, Express, MongoDB, REST APIs",
   },
   {
-    title: "Data Structure and Algorithms",
+    title: "Data Structures & Algorithms in C++",
     issuer: "CodeHelp",
-    icon: <FaCertificate className="text-purple-400" />,
+    skills: "Problem Solving, Trees, Graphs, Dynamic Programming, Time Complexity",
   },
   {
-    title: "Introduction to Programming Using Python",
-    issuer: "SOFTWIZZ",
-    icon: <FaCertificate className="text-purple-400" />,
+    title: "Python Systems & Core Programming",
+    issuer: "Softwizz Pvt. Ltd.",
+    skills: "Object-Oriented Programming, Scripting, MySQL Integration",
   },
 ];
 
-const Experience = () => {
-  return (
-    <section
-      id="experience"
-      className="py-20 bg-gray-950 relative overflow-hidden"
-    >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-10">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              x: [0, 100, 0],
-              y: [0, 50, 0],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: Math.random() * 20 + 10,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute w-2 h-2 bg-blue-400 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
+// ── Achievements & Hackathons
+const ACHIEVEMENTS = [
+  {
+    title: "Team Lead — Smart India Hackathon (SIH)",
+    year: "2023",
+    desc: "Led a university engineering team in designing and pitching a digital solution for public sector governance challenges.",
+  },
+  {
+    title: "4-Star Fraternity Engineering Ranking",
+    year: "Honors",
+    desc: "Achieved the highest possible 4-star tier awarded by the Office of Student Affairs for academic and technical leadership.",
+  },
+  {
+    title: "Core Member — GDG (Google Developer Group)",
+    year: "2023 – 2024",
+    desc: "Active organizer for local tech workshops focused on Gemini models, generative AI APIs, and cloud deployments.",
+  },
+  {
+    title: "Google Developer Student Clubs (GDSC)",
+    year: "2023",
+    desc: "Mentored peers in modern JavaScript and full-stack web application development.",
+  },
+];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
+
+export default function ExperiencePage() {
+  return (
+    <div className="bg-[#0a0a0a] min-h-screen text-white pt-28 sm:pt-36 pb-20 relative overflow-hidden">
+      {/* Background ambient glow */}
+      <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-emerald-500/[0.02] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-40 left-10 w-[600px] h-[600px] bg-white/[0.012] blur-[130px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+
+        {/* ── HEADER ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          className="max-w-3xl mb-14 sm:mb-20"
         >
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            My <span className="text-blue-400">Journey</span>
-          </motion.h2>
-          <motion.p
-            className="text-lg text-gray-400 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            Professional milestones and achievements
-          </motion.p>
-          <motion.div
-            className="w-24 h-1.5 bg-blue-500 mx-auto mt-6 rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-          />
+          <div className="mb-4">
+            <span className="text-[13px] sm:text-[14px] font-bold text-emerald-400 tracking-[0.2em] uppercase">
+              Track Record &middot; Work History
+            </span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-white">
+            Professional <span className="text-emerald-400">Experience</span>
+          </h1>
+
+          <p className="mt-5 text-[16px] sm:text-[18px] text-gray-200 leading-[1.65] font-normal">
+            3+ years engineering production software — from high-concurrency OTT streaming platforms (Oceaniek Stream)
+            and luxury e-commerce with automated logistics (ODI Studio), to AI ad automations and scalable cloud infrastructure.
+          </p>
+
+          {/* Quick Metrics Bar */}
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-white/[0.08]">
+            <div>
+              <p className="text-2xl sm:text-3xl font-black text-white">3+ Yrs</p>
+              <p className="text-[13px] text-gray-300 mt-1 font-medium">Full-Stack Experience</p>
+            </div>
+            <div>
+              <p className="text-2xl sm:text-3xl font-black text-white">20+</p>
+              <p className="text-[13px] text-gray-300 mt-1 font-medium">Projects Built</p>
+            </div>
+            <div>
+              <p className="text-2xl sm:text-3xl font-black text-white">E-Commerce</p>
+              <p className="text-[13px] text-gray-300 mt-1 font-medium">Stores &amp; Payments</p>
+            </div>
+            <div>
+              <p className="text-2xl sm:text-3xl font-black text-emerald-400">AI &amp; SaaS</p>
+              <p className="text-[13px] text-gray-300 mt-1 font-medium">Web Apps &amp; Automation</p>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Experience Timeline */}
-        <div className="relative mb-32">
-          <motion.div
-            className="absolute left-1/2 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-600 hidden md:block"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          />
+        {/* ── WORK EXPERIENCE TIMELINE ── */}
+        <div className="mb-24 sm:mb-32">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest block mb-2">
+                Career History
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                Engineering Roles &amp; Engagements
+              </h2>
+            </div>
+          </div>
 
-          {experiences.map((_, index) => (
-            <motion.div
-              key={index}
-              className="absolute left-1/2 transform -translate-x-1/2 hidden md:block"
-              style={{ top: `${index * 33 + 16}%` }}
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-                delay: index * 0.2,
-              }}
-              viewport={{ once: true }}
-            >
-              <div className="w-5 h-5 bg-blue-500 rounded-full border-4 border-gray-950" />
-            </motion.div>
-          ))}
-
-          <div className="space-y-16">
-            {experiences.map((exp, index) => (
+          <div className="space-y-8">
+            {EXPERIENCES.map((exp, i) => (
               <motion.div
-                key={index}
-                initial={{
-                  opacity: 0,
-                  x: exp.side === "left" ? -100 : 100,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  x: 0,
-                  transition: {
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 15,
-                    delay: index * 0.15,
-                  },
-                }}
-                viewport={{ once: true, margin: "-100px" }}
-                className={`relative md:w-1/2 px-6 py-6 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-xl shadow-lg backdrop-blur-sm ${
-                  exp.side === "left" ? "md:ml-auto" : "md:mr-auto"
-                } hover:border-blue-500/50 transition-all duration-300 group`}
+                key={exp.company + exp.period}
+                custom={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-60px" }}
+                className="group relative p-7 sm:p-9 rounded-2xl sm:rounded-3xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/40 hover:bg-[#111111] transition-all duration-400 shadow-xl overflow-hidden"
               >
-                <div className="absolute -top-5 -left-5 bg-gray-950 p-2 rounded-full border border-gray-800 group-hover:border-blue-500 transition-all duration-300">
-                  {exp.icon}
+                {/* Ambient glow */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/[0.02] group-hover:bg-emerald-500/[0.06] rounded-full blur-3xl pointer-events-none transition-all duration-500" />
+
+                <div className="relative z-10">
+                  {/* Top Meta Line */}
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-6 pb-6 border-b border-white/[0.06]">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3 mb-2">
+                        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-white">
+                          {exp.role}
+                        </h3>
+                        <span className="px-3 py-1 text-[11px] font-bold text-emerald-400 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-full uppercase tracking-wider">
+                          {exp.badge}
+                        </span>
+                      </div>
+                      <p className="text-[17px] font-bold text-emerald-400">
+                        {exp.company}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-4 text-[14px] text-gray-300 font-medium">
+                      <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                        <FiCalendar className="w-4 h-4 text-emerald-400" />
+                        {exp.period}
+                      </span>
+                      <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                        <FiMapPin className="w-4 h-4 text-gray-400" />
+                        {exp.location}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Summary */}
+                  <p className="text-[16px] text-gray-200 leading-relaxed font-normal mb-6">
+                    {exp.summary}
+                  </p>
+
+                  {/* Featured Projects Built in Role (if applicable) */}
+                  {exp.projects && (
+                    <div className="mb-6">
+                      <p className="text-[13px] font-bold text-gray-400 uppercase tracking-wider mb-3">
+                        Featured Systems Delivered:
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                        {exp.projects.map((proj) => (
+                          <div
+                            key={proj.name}
+                            className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all"
+                          >
+                            <div className="flex items-center justify-between gap-2 mb-1.5">
+                              <span className="text-[15px] font-bold text-white">
+                                {proj.name}
+                              </span>
+                              {proj.url && (
+                                <a
+                                  href={proj.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-[12px] font-semibold text-emerald-400 hover:underline"
+                                >
+                                  <span>Live Platform</span>
+                                  <FiExternalLink className="w-3.5 h-3.5" />
+                                </a>
+                              )}
+                            </div>
+                            <p className="text-[13px] sm:text-[14px] text-gray-300 leading-relaxed">
+                              {proj.desc}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Responsibilities Bullets (if applicable) */}
+                  {exp.points && (
+                    <ul className="space-y-3 mb-6">
+                      {exp.points.map((pt, j) => (
+                        <li
+                          key={j}
+                          className="flex items-start gap-3 text-[15px] sm:text-[16px] text-gray-200 leading-relaxed font-normal"
+                        >
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 mt-2 shrink-0" />
+                          <span>{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Technology Pills */}
+                  <div className="flex flex-wrap items-center gap-2 pt-2">
+                    {exp.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1 rounded-lg text-[12px] font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.07] group-hover:border-white/[0.12] transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                <div className="absolute inset-0 rounded-xl overflow-hidden">
-                  <div className="absolute -inset-1 bg-blue-500/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-1 flex items-center">
-                  {exp.title}
-                  <motion.span
-                    className="ml-2 text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full"
-                    initial={{ scale: 0.9 }}
-                    animate={{ scale: 1 }}
-                    transition={{
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      duration: 2,
-                    }}
-                  >
-                    {exp.period}
-                  </motion.span>
-                </h3>
-                <p className="text-blue-400 mb-3 font-medium">{exp.company}</p>
-
-                <ul className="space-y-2">
-                  {exp.details.map((point, i) => (
-                    <motion.li
-                      key={i}
-                      className="text-gray-300 text-sm pl-4 relative before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-blue-400 before:rounded-full"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 * i + index * 0.15 }}
-                      viewport={{ once: true }}
-                    >
-                      {point}
-                    </motion.li>
-                  ))}
-                </ul>
-
-                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Education Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <motion.div className="text-center mb-16">
-            <motion.h2
-              className="text-4xl md:text-5xl font-bold text-white mb-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-blue-400">Education</span> Background
-            </motion.h2>
-            <motion.div
-              className="w-24 h-1.5 bg-blue-500 mx-auto mt-6 rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            />
-          </motion.div>
+        {/* ── EDUCATION & CERTIFICATIONS (2-COLUMN GRID) ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mb-24 sm:mb-32">
+          
+          {/* Left Column: Education */}
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest">
+                Academic Foundation
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-8">
+              Education Background
+            </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {education.map((edu, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.15 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  y: -10,
-                  boxShadow: "0 15px 30px rgba(0,0,0,0.3)",
-                }}
-                className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-xl shadow-lg p-6 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300 group relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center mb-4">
-                    <div className="p-3 bg-blue-500/20 rounded-full mr-4">
-                      {edu.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">
+            <div className="space-y-5">
+              {EDUCATION.map((edu, i) => (
+                <div
+                  key={edu.degree}
+                  className="p-6 sm:p-7 rounded-2xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/30 transition-all duration-300"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                    <h3 className="text-[18px] sm:text-[19px] font-bold text-white tracking-tight">
                       {edu.degree}
                     </h3>
+                    <span className="text-[13px] font-semibold text-emerald-400 shrink-0">
+                      {edu.grade}
+                    </span>
                   </div>
-                  <p className="text-gray-200 mb-2">{edu.institution}</p>
-                  <p className="text-gray-300 text-sm mb-1">{edu.period}</p>
-                  <p className="text-blue-300 font-medium">{edu.score}</p>
+                  <p className="text-[15px] text-gray-300 font-medium mb-2">
+                    {edu.institution}
+                  </p>
+                  <p className="text-[13px] text-gray-400 mb-3 font-mono">
+                    {edu.period}
+                  </p>
+                  <p className="text-[14px] text-gray-300 leading-relaxed">
+                    {edu.summary}
+                  </p>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
-        </motion.div>
 
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <motion.div className="text-center mb-16">
-            <motion.h2
-              className="text-4xl md:text-5xl font-bold text-white mb-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Professional{" "}
-              <span className="text-purple-400">Certifications</span>
-            </motion.h2>
-            <motion.div
-              className="w-24 h-1.5 bg-purple-500 mx-auto mt-6 rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            />
-          </motion.div>
+          {/* Right Column: Certifications */}
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest">
+                Specialized Training
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-8">
+              Professional Certifications
+            </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.15 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-                }}
-                className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-xl shadow-lg overflow-hidden hover:border-purple-500/50 transition-all duration-300 group relative"
+            <div className="space-y-5">
+              {CERTIFICATIONS.map((cert) => (
+                <div
+                  key={cert.title}
+                  className="p-6 rounded-2xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/30 transition-all duration-300"
+                >
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <h3 className="text-[17px] font-bold text-white">
+                      {cert.title}
+                    </h3>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/[0.08] text-emerald-400 border border-emerald-500/20">
+                      Verified
+                    </span>
+                  </div>
+                  <p className="text-[14px] text-emerald-400 font-medium mb-2">
+                    Issued by {cert.issuer}
+                  </p>
+                  <p className="text-[13px] text-gray-300 leading-relaxed">
+                    {cert.skills}
+                  </p>
+                </div>
+              ))}
+
+              {/* Direct Link to Verified Projects */}
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-[#121212] to-[#0a0a0a] border border-white/[0.08] mt-6">
+                <h4 className="text-[16px] font-bold text-white mb-2">
+                  Looking for Proof of Execution?
+                </h4>
+                <p className="text-[14px] text-gray-300 leading-relaxed mb-4">
+                  Explore full case studies with live URLs and GitHub source repositories across 20+ applications.
+                </p>
+                <Link
+                  href="/my-projects"
+                  className="inline-flex items-center gap-2 text-[14px] font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+                >
+                  <span>Browse Project Case Studies</span>
+                  <FiArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── ACHIEVEMENTS & ACTIVITIES ── */}
+        <div className="mb-20">
+          <div className="max-w-2xl mb-8">
+            <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest block mb-2">
+              Leadership &middot; Community
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Achievements &amp; Activities
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {ACHIEVEMENTS.map((ach) => (
+              <div
+                key={ach.title}
+                className="p-6 rounded-2xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/30 transition-all flex flex-col justify-between"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="p-3 bg-purple-500/20 rounded-full mr-4">
-                        {cert.icon}
-                      </div>
-                      <h3 className="text-xl font-semibold text-white">
-                        {cert.title}
-                      </h3>
-                    </div>
-                    <p className="text-gray-300">
-                      Issued by:{" "}
-                      <span className="text-purple-300">{cert.issuer}</span>
-                    </p>
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/[0.08] border border-emerald-500/20">
+                      {ach.year}
+                    </span>
                   </div>
-                  <div className="bg-white/5 px-6 py-4">
-                    <span className="text-sm text-purple-300">Verified</span>
-                  </div>
+                  <h3 className="text-[16px] font-bold text-white mb-2 leading-snug">
+                    {ach.title}
+                  </h3>
+                  <p className="text-[13px] text-gray-300 leading-relaxed">
+                    {ach.desc}
+                  </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+        </div>
 
-export default Experience;
+        {/* ── BOTTOM CTA BANNER ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#121212] via-[#0d0d0d] to-[#080808] border border-white/[0.1] hover:border-emerald-500/30 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/[0.04] rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 max-w-2xl">
+            <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-[0.2em] block mb-3">
+              Ready to Collaborate
+            </span>
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+              Have a Project or Architecture to Build?
+            </h3>
+            <p className="mt-3 text-[15px] sm:text-[16px] text-gray-300 leading-relaxed font-normal">
+              From web apps and OTT platforms to cloud infrastructure and AI automations &mdash; let&apos;s build software that accelerates your business.
+            </p>
+          </div>
+
+          <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full lg:w-auto shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-[15px] font-bold text-black bg-white rounded-xl hover:bg-gray-100 active:scale-95 transition-all shadow-xl shadow-white/10"
+            >
+              <span>Hire Me</span>
+              <FiArrowUpRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/our-services"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold text-white border border-white/20 bg-white/[0.04] rounded-xl hover:bg-white/[0.08] hover:border-emerald-500/40 active:scale-95 transition-all"
+            >
+              <span>Our Services</span>
+            </Link>
+          </div>
+        </motion.div>
+
+      </div>
+    </div>
+  );
+}
