@@ -24,8 +24,8 @@ const SERVICES = [
   {
     title: "Cloud Infrastructure & DevOps",
     icon: <FiCloud className="w-6 h-6" />,
-    description: "Cloud-native deployments on AWS and GCP Cloud Run. Resilient serverless architectures, Docker containerization, and automated CI/CD pipelines.",
-    tags: ["AWS", "GCP Cloud Run", "Docker", "CI/CD"],
+    description: "Cloud-native architectures, containerized Docker microservices, serverless functions, automated CI/CD pipelines, and high-availability production environments.",
+    tags: ["Cloud Infra", "Docker", "CI/CD", "Serverless"],
   },
   {
     title: "Custom AI Automation Pipelines",
@@ -69,10 +69,10 @@ const TECH_STACK = [
   {
     category: "Cloud & DevOps",
     techs: [
-      { name: "AWS", desc: "Amazon Web Services scalable cloud ecosystem" },
-      { name: "GCP Cloud Run", desc: "Serverless container orchestration & automatic scaling" },
+      { name: "Cloud Infrastructure", desc: "Scalable compute, serverless backends & high-availability architectures" },
       { name: "Docker", desc: "Containerized environments for predictable deployment" },
-      { name: "CI/CD", desc: "Automated GitHub Actions build, test, and release flows" },
+      { name: "CI/CD Pipelines", desc: "Automated GitHub Actions build, test, and release flows" },
+      { name: "Serverless & Microservices", desc: "Scalable microservices and lightweight serverless handlers" },
       { name: "Firebase", desc: "Realtime data synchronization & authentication" },
     ],
   },
@@ -145,41 +145,45 @@ const SkillsSection = () => {
       ═══════════════════════════════════════════ */}
       <section
         id="skills"
-        className="bg-[#0a0a0a] py-24 sm:py-32 relative overflow-hidden"
+        className="bg-[#0a0a0a] py-16 sm:py-20 relative overflow-hidden"
       >
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/[0.015] blur-[120px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/[0.015] blur-[100px] rounded-full pointer-events-none translate-y-1/2 -translate-x-1/3" />
 
         <div className="max-w-7xl mx-auto px-8 lg:px-14 relative z-10">
-          {/* Section header */}
+          {/* Section header — Centered Command Center Layout */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="mb-16 sm:mb-24 text-center sm:text-left"
+            transition={{ duration: 0.6 }}
+            className="mb-10 sm:mb-12 text-center max-w-4xl mx-auto"
           >
-            <div className="flex items-center gap-4 mb-8 justify-center sm:justify-start">
-              <span className="flex-shrink-0 w-8 h-px bg-white/20" />
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <p className="text-[11px] uppercase tracking-[0.28em] text-emerald-400 font-bold">
-                  Core Competencies
-                </p>
-              </div>
-            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black tracking-tight leading-tight mb-4">
+              <span className="text-white">Full-Stack, </span>
+              <span className="text-emerald-400">Cloud &amp; AI</span>
+            </h2>
 
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
-                <span className="text-white">Full Stack, </span>
-                <span className="text-emerald-400">Cloud &amp; AI</span>
-              </h2>
-              <p className="text-[15px] text-gray-400 max-w-md leading-relaxed lg:pb-2 mx-auto sm:mx-0 lg:mx-0">
-                End-to-end engineering excellence — from performant web applications to scalable AWS/GCP cloud platforms and domain-adapted AI model integrations.
-              </p>
-            </div>
+            <p className="text-[15px] sm:text-[16px] text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal mb-6">
+              End-to-end software delivery &mdash; from high-performance web applications and resilient cloud infrastructure to production-ready AI workflow automations.
+            </p>
 
-            <div className="mt-12 w-full h-px bg-gradient-to-r from-emerald-500/20 via-white/10 to-transparent" />
+            {/* Capability Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
+              {[
+                "Custom Web Applications",
+                "OTT & E-Commerce Platforms",
+                "Cloud Infrastructure & DevOps",
+                "Applied AI & Automations",
+              ].map((badge) => (
+                <span
+                  key={badge}
+                  className="px-4 py-1.5 rounded-full text-[12px] font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08]"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           {/* Services Grid — 6 cards */}
@@ -230,7 +234,7 @@ const SkillsSection = () => {
           </motion.div>
 
           {/* ── Interactive Tech Stack Breakdown ── */}
-          <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-[#0d0d0d] border border-white/[0.07]">
+          <div className="mt-12 sm:mt-14 p-8 sm:p-12 rounded-3xl bg-[#0d0d0d] border border-white/[0.07]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-white/[0.06]">
               <div>
                 <h3 className="text-2xl font-black text-white tracking-tight">

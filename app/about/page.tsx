@@ -289,11 +289,13 @@ export const About = () => {
         {/* ── CAREER MILESTONES & CREDENTIALS ── */}
         <div className="mb-24 sm:mb-32">
           <div className="max-w-3xl mb-12">
-            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-widest block mb-3">
-              Verified Background
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Professional Journey &amp; Milestones
+            <div className="mb-3">
+              <span className="text-[13px] sm:text-[14px] font-bold text-emerald-400 uppercase tracking-[0.2em]">
+                Career &middot; Milestones
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1]">
+              Work <span className="text-emerald-400">Experience</span>
             </h2>
           </div>
 

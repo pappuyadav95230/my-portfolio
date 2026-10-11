@@ -86,31 +86,30 @@ export const FeaturedProjects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-16 sm:mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-6"
+          className="mb-14 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 mb-5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-widest">
-                Flagship Case Studies
+            <div className="mb-3">
+              <span className="text-[13px] sm:text-[14px] font-bold text-emerald-400 uppercase tracking-[0.2em]">
+                Portfolio &middot; Case Studies
               </span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-white">
-              Production <span className="text-emerald-400">Architectures</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] text-white">
+              Featured <span className="text-emerald-400">Projects</span>
             </h2>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <p className="text-[15px] text-gray-400 max-w-md leading-relaxed">
-              Real-world systems with fine-tuned vision models, multi-cloud FinOps pipelines,
-              and live commercial platforms shipped for production scale.
+            <p className="text-[15px] sm:text-[16px] text-gray-300 max-w-md leading-relaxed font-normal">
+              A selection of live web applications, e-commerce stores, and custom platforms built and shipped for real businesses.
             </p>
             <Link
               href="/my-projects"
-              className="group inline-flex items-center gap-2 text-[13px] font-bold text-white hover:text-emerald-400 whitespace-nowrap transition-colors"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 hover:border-emerald-500/40 bg-white/[0.03] hover:bg-white/[0.08] text-[13px] font-bold text-white hover:text-emerald-400 whitespace-nowrap transition-all"
             >
-              View All 8+ Projects &rarr;
+              <span>View All 20+ Projects</span>
+              <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </div>
         </motion.div>
