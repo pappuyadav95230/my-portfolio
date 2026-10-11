@@ -3,17 +3,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
-  FiBriefcase,
-  FiAward,
-  FiBookOpen,
-  FiCheckCircle,
   FiArrowUpRight,
   FiExternalLink,
-  FiLayers,
-  FiTrendingUp,
-  FiTerminal,
   FiCalendar,
   FiMapPin,
+  FiLayers,
+  FiCpu,
+  FiServer,
+  FiCode,
+  FiActivity,
+  FiCheckCircle,
+  FiTrendingUp,
 } from "react-icons/fi";
 
 // ── Work Experiences
@@ -23,40 +23,53 @@ const EXPERIENCES = [
     company: "Oceaniek Technologies",
     period: "2024 – Present",
     location: "Remote / Hybrid",
-    type: "Contract & Technical Partner",
     badge: "Core Engineering Partner",
+    badgeType: "emerald",
     summary:
-      "Leading technical architecture, full-stack product execution, and high-availability deployments across live commercial products.",
+      "Leading technical architecture, full-stack product execution, and high-availability cloud deployments across live commercial products.",
     projects: [
       {
         name: "Oceaniek Stream",
         url: "https://www.oceaniekstream.com/",
-        desc: "Commercial OTT streaming platform with video transcoding, subscriber auth, and content catalog infrastructure.",
+        tag: "OTT Video Streaming",
+        desc: "Commercial streaming platform with adaptive video transcoding, subscription auth, and scalable content catalog infrastructure.",
       },
       {
         name: "ODI Studio",
         url: "https://odi.studio/",
-        desc: "Luxury e-commerce with custom auth, Razorpay payments, and automated Delhivery logistics shipping APIs.",
+        tag: "E-Commerce & Logistics",
+        desc: "Luxury e-commerce with custom auth, Razorpay payments, and automated Delhivery shipping logistics APIs.",
       },
       {
         name: "ShipOnEarth",
         url: "https://shiponearth.online/",
-        desc: "Maritime vessel intelligence with Mapbox GL, real-time AIS telemetry, and fleet search engine.",
+        tag: "Maritime Telemetry",
+        desc: "Live maritime vessel intelligence platform with Mapbox GL, real-time AIS telemetry, and fleet search engine.",
       },
       {
         name: "Hospital Information System (HIS)",
+        tag: "Healthcare ERP",
         desc: "Enterprise hospital management software with full IPD, OPD, pathology, and administrative role portals.",
       },
     ],
-    skills: ["Next.js 15", "TypeScript", "Python FastAPI", "Docker", "Node.js", "Payment Gateways", "Live Streaming"],
+    skills: [
+      "Next.js 15",
+      "TypeScript",
+      "Python FastAPI",
+      "Docker",
+      "Node.js",
+      "Razorpay",
+      "Delhivery APIs",
+      "Mapbox GL",
+    ],
   },
   {
     role: "Full-Stack Developer",
     company: "Alphanumeric Ideas Pvt. Ltd.",
     period: "Jan 2024 – 2026",
     location: "Ludhiana, India",
-    type: "Full-Time",
     badge: "8+ Commercial Releases",
+    badgeType: "emerald",
     summary:
       "Delivered production web platforms, AI ad creative automations, and multi-cloud analytics infrastructure under strict performance budgets.",
     points: [
@@ -65,15 +78,23 @@ const EXPERIENCES = [
       "Built high-concurrency GAQL analytics pipelines integrating the Google Ads API to surface real-time video ad telemetry.",
       "Optimized cloud resource allocation, containerized services with Docker, and slashed operating overhead by up to 80%.",
     ],
-    skills: ["Next.js", "Python FastAPI", "AI Video Automation", "Google Ads API", "Docker", "PostgreSQL", "Cloud DevOps"],
+    skills: [
+      "Next.js",
+      "Python FastAPI",
+      "AI Video Automation",
+      "Google Ads GAQL",
+      "Docker",
+      "PostgreSQL",
+      "Cloud Run",
+    ],
   },
   {
     role: "Web Developer Executive Intern",
     company: "Alphanumeric Ideas Pvt. Ltd.",
     period: "Sep 2023 – Jan 2024",
     location: "Ludhiana, India",
-    type: "Internship",
     badge: "Frontend & Performance",
+    badgeType: "gray",
     summary:
       "Developed responsive client user interfaces, improved Core Web Vitals, and maintained core customer-facing web products.",
     points: [
@@ -88,8 +109,8 @@ const EXPERIENCES = [
     company: "Softwizz Pvt. Ltd.",
     period: "Jul 2022 – Aug 2022",
     location: "Punjab, India",
-    type: "Internship",
     badge: "Backend & Systems",
+    badgeType: "gray",
     summary:
       "Constructed foundational desktop database applications and structured relational schema models.",
     points: [
@@ -169,117 +190,309 @@ const ACHIEVEMENTS = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
-  }),
-};
-
 export default function ExperiencePage() {
   return (
-    <div className="bg-[#0a0a0a] min-h-screen text-white pt-28 sm:pt-36 pb-20 relative overflow-hidden">
-      {/* Background ambient glow */}
-      <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-emerald-500/[0.02] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-40 left-10 w-[600px] h-[600px] bg-white/[0.012] blur-[130px] rounded-full pointer-events-none" />
+    <div className="bg-[#0a0a0a] min-h-screen text-white overflow-hidden">
+      
+      {/* ══════════════════════════════════════════════════════════════════
+          HERO SECTION: PREMIUM HIGH-IMPACT 2-COLUMN SPLIT (NO IMAGES)
+          Left: Bold Typography & CTAs
+          Right: Live Engineering Telemetry Terminal & System Highlights
+          ══════════════════════════════════════════════════════════════════ */}
+      <section
+        id="experience-hero"
+        className="relative bg-[#0a0a0a] overflow-hidden pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-20"
+      >
+        {/* Ambient background glows */}
+        <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-500/[0.04] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-20 right-10 w-[500px] h-[450px] bg-white/[0.015] blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-14 relative z-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+            
+            {/* ── LEFT COLUMN: HEADLINE & STORY ── */}
+            <div className="lg:col-span-7">
+              {/* Eyebrow */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-5 flex items-center gap-3"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-[13px] sm:text-[14px] font-bold text-emerald-400 tracking-[0.22em] uppercase">
+                  Track Record &middot; Work History
+                </span>
+              </motion.div>
 
-        {/* ── HEADER ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-14 sm:mb-20"
-        >
-          <div className="mb-4">
-            <span className="text-[13px] sm:text-[14px] font-bold text-emerald-400 tracking-[0.2em] uppercase">
-              Track Record &middot; Work History
-            </span>
+              {/* Bold Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="font-black leading-[1.06] tracking-tight text-white text-[38px] sm:text-[54px] lg:text-[64px]"
+              >
+                Proven Track Record
+                <br />
+                <span className="text-white">In High-Impact</span>
+                <br />
+                <span className="text-emerald-400">Engineering.</span>
+              </motion.h1>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="mt-6 sm:mt-7 text-[16px] sm:text-[18px] text-gray-200 leading-[1.65] max-w-xl font-normal"
+              >
+                3+ years engineering production software — from high-concurrency OTT streaming platforms (Oceaniek Stream) and luxury e-commerce with automated logistics (ODI Studio), to AI video automations and multi-cloud backends.
+              </motion.p>
+
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.28 }}
+                className="mt-8 flex flex-wrap items-center gap-3.5"
+              >
+                <a
+                  href="#roles-section"
+                  className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] font-bold text-black bg-white rounded-xl hover:bg-gray-100 active:scale-95 transition-all duration-200 shadow-md shadow-white/5"
+                >
+                  <span>Explore Career Roles</span>
+                  <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+
+                <Link
+                  href="/my-projects"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-medium text-white border border-white/20 bg-white/[0.04] rounded-xl hover:bg-white/[0.08] hover:border-emerald-500/40 active:scale-95 transition-all duration-200"
+                >
+                  <span>Live Project Case Studies</span>
+                  <FiArrowUpRight className="w-4 h-4 text-emerald-400" />
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* ── RIGHT COLUMN: SYSTEM TELEMETRY TERMINAL & ARCHITECTURE HIGHLIGHTS ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="lg:col-span-5"
+            >
+              <div className="relative p-6 sm:p-7 rounded-3xl bg-[#0d0d0d] border border-white/[0.1] hover:border-emerald-500/30 transition-all duration-300 shadow-2xl">
+                {/* Glow accent */}
+                <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/[0.05] rounded-full blur-3xl pointer-events-none" />
+
+                {/* Terminal Header */}
+                <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/[0.08]">
+                  <div className="flex items-center gap-2">
+                    <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                    <span className="ml-2 text-[12px] font-mono text-gray-400">production-telemetry.sys</span>
+                  </div>
+                  <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/[0.08] px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+                    LIVE STATUS
+                  </span>
+                </div>
+
+                {/* Telemetry Points */}
+                <div className="space-y-4">
+                  
+                  {/* Item 1: Hospital Information System (HIS) */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/30 transition-all">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="text-[13px] font-bold text-white flex items-center gap-2">
+                        <FiLayers className="w-4 h-4 text-emerald-400" />
+                        Hospital Information System (HIS)
+                      </span>
+                      <span className="text-[11px] font-mono text-emerald-400">Enterprise ERP</span>
+                    </div>
+                    <p className="text-[12px] text-gray-300">
+                      Multi-portal healthcare platform: IPD, OPD, pathology, doctor scheduling &amp; role-based administration.
+                    </p>
+                  </div>
+
+                  {/* Item 2 */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/30 transition-all">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="text-[13px] font-bold text-white flex items-center gap-2">
+                        <FiCode className="w-4 h-4 text-emerald-400" />
+                        ODI Studio (E-Commerce)
+                      </span>
+                      <span className="text-[11px] font-mono text-emerald-400">Automated</span>
+                    </div>
+                    <p className="text-[12px] text-gray-300">
+                      Razorpay payments checkout &amp; real-time automated Delhivery shipping logistics APIs.
+                    </p>
+                  </div>
+
+                  {/* Item 3 */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/30 transition-all">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="text-[13px] font-bold text-white flex items-center gap-2">
+                        <FiCpu className="w-4 h-4 text-emerald-400" />
+                        AI Video Ad Automation
+                      </span>
+                      <span className="text-[11px] font-mono text-emerald-400">1,000+ / Day</span>
+                    </div>
+                    <p className="text-[12px] text-gray-300">
+                      High-volume programmatic video generation pipeline with Google Ads GAQL analytics.
+                    </p>
+                  </div>
+
+                  {/* Item 4 */}
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/30 transition-all">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="text-[13px] font-bold text-white flex items-center gap-2">
+                        <FiServer className="w-4 h-4 text-emerald-400" />
+                        Cloud &amp; DevOps Optimization
+                      </span>
+                      <span className="text-[11px] font-mono text-emerald-400">-80% Overhead</span>
+                    </div>
+                    <p className="text-[12px] text-gray-300">
+                      Docker containerization, GCP Cloud Run &amp; AWS microservices cost slashed by 80%.
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* Footer strip of the card */}
+                <div className="mt-5 pt-3.5 border-t border-white/[0.06] flex items-center justify-between text-[12px] text-gray-400">
+                  <span className="flex items-center gap-1.5 text-gray-300 font-medium">
+                    <FiCheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    Production Ready
+                  </span>
+                  <span className="font-mono text-emerald-400">Full-Stack &middot; DevOps &middot; AI</span>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-white">
-            Professional <span className="text-emerald-400">Experience</span>
-          </h1>
+        </div>
+      </section>
 
-          <p className="mt-5 text-[16px] sm:text-[18px] text-gray-200 leading-[1.65] font-normal">
-            3+ years engineering production software — from high-concurrency OTT streaming platforms (Oceaniek Stream)
-            and luxury e-commerce with automated logistics (ODI Studio), to AI ad automations and scalable cloud infrastructure.
-          </p>
+      {/* ══════════════════════════════════════════════════════════════════
+          PRODUCTION PROOF METRICS STRIP (IDENTICAL TO HOMEPAGE)
+          ══════════════════════════════════════════════════════════════════ */}
+      <section className="bg-[#080808] border-y border-white/[0.06] py-6 sm:py-7 relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/25 to-transparent" />
 
-          {/* Quick Metrics Bar */}
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-white/[0.08]">
-            <div>
-              <p className="text-2xl sm:text-3xl font-black text-white">3+ Yrs</p>
-              <p className="text-[13px] text-gray-300 mt-1 font-medium">Full-Stack Experience</p>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-14">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-center">
+            
+            {/* Metric 1 */}
+            <div className="flex flex-col">
+              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-none">
+                3+ Yrs
+              </span>
+              <span className="text-[12px] sm:text-[13px] text-gray-400 font-medium mt-1.5">
+                Full-Stack Experience
+              </span>
             </div>
-            <div>
-              <p className="text-2xl sm:text-3xl font-black text-white">20+</p>
-              <p className="text-[13px] text-gray-300 mt-1 font-medium">Projects Built</p>
+
+            {/* Metric 2 */}
+            <div className="flex flex-col sm:border-l sm:border-white/[0.08] sm:pl-6 lg:pl-8">
+              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-none">
+                20+
+              </span>
+              <span className="text-[12px] sm:text-[13px] text-gray-400 font-medium mt-1.5">
+                Projects Built
+              </span>
             </div>
-            <div>
-              <p className="text-2xl sm:text-3xl font-black text-white">E-Commerce</p>
-              <p className="text-[13px] text-gray-300 mt-1 font-medium">Stores &amp; Payments</p>
+
+            {/* Metric 3 */}
+            <div className="flex flex-col md:border-l md:border-white/[0.08] md:pl-6 lg:pl-8">
+              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-none">
+                E-Commerce
+              </span>
+              <span className="text-[12px] sm:text-[13px] text-gray-400 font-medium mt-1.5">
+                Stores &amp; Payments
+              </span>
             </div>
-            <div>
-              <p className="text-2xl sm:text-3xl font-black text-emerald-400">AI &amp; SaaS</p>
-              <p className="text-[13px] text-gray-300 mt-1 font-medium">Web Apps &amp; Automation</p>
+
+            {/* Metric 4 */}
+            <div className="flex flex-col sm:border-l sm:border-white/[0.08] sm:pl-6 lg:pl-8">
+              <span className="text-2xl sm:text-3xl font-black text-emerald-400 tracking-tight leading-none">
+                AI &amp; SaaS
+              </span>
+              <span className="text-[12px] sm:text-[13px] text-gray-400 font-medium mt-1.5">
+                Web Apps &amp; Automations
+              </span>
             </div>
+
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* ── WORK EXPERIENCE TIMELINE ── */}
-        <div className="mb-24 sm:mb-32">
-          <div className="flex items-center justify-between mb-10">
+      {/* ══════════════════════════════════════════════════════════════════
+          MAIN CONTENT AREA: ROLES, EDUCATION, CERTIFICATIONS, CTA
+          ══════════════════════════════════════════════════════════════════ */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-20 sm:pt-28 pb-20 relative z-10">
+        
+        {/* ── WORK EXPERIENCE SECTION ── */}
+        <section id="roles-section" className="mb-24 sm:mb-32">
+          
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-white/[0.08]">
             <div>
               <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest block mb-2">
                 Career History
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
                 Engineering Roles &amp; Engagements
               </h2>
             </div>
+            <p className="text-[14px] text-gray-400 max-w-md font-normal">
+              Direct engineering ownership across real revenue-generating platforms, production users, and modern cloud stacks.
+            </p>
           </div>
 
           <div className="space-y-8">
             {EXPERIENCES.map((exp, i) => (
               <motion.div
                 key={exp.company + exp.period}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                className="group relative p-7 sm:p-9 rounded-2xl sm:rounded-3xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/40 hover:bg-[#111111] transition-all duration-400 shadow-xl overflow-hidden"
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className="group relative p-7 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/40 hover:bg-[#111111] transition-all duration-300 shadow-2xl overflow-hidden"
               >
-                {/* Ambient glow */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/[0.02] group-hover:bg-emerald-500/[0.06] rounded-full blur-3xl pointer-events-none transition-all duration-500" />
+                {/* Ambient glow on hover */}
+                <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/[0.02] group-hover:bg-emerald-500/[0.05] rounded-full blur-3xl pointer-events-none transition-all duration-500" />
 
                 <div className="relative z-10">
                   {/* Top Meta Line */}
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-6 pb-6 border-b border-white/[0.06]">
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-6 border-b border-white/[0.06]">
                     <div>
                       <div className="flex flex-wrap items-center gap-3 mb-2">
-                        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-white">
+                        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                           {exp.role}
                         </h3>
-                        <span className="px-3 py-1 text-[11px] font-bold text-emerald-400 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-full uppercase tracking-wider">
+                        <span
+                          className={`px-3 py-1 text-[11px] font-bold rounded-full uppercase tracking-wider ${
+                            exp.badgeType === "emerald"
+                              ? "text-emerald-400 bg-emerald-500/[0.08] border border-emerald-500/20"
+                              : "text-gray-300 bg-white/[0.04] border border-white/[0.1]"
+                          }`}
+                        >
                           {exp.badge}
                         </span>
                       </div>
-                      <p className="text-[17px] font-bold text-emerald-400">
+                      <p className="text-[17px] sm:text-[18px] font-bold text-emerald-400">
                         {exp.company}
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-4 text-[14px] text-gray-300 font-medium">
-                      <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                    <div className="flex flex-wrap items-center gap-3 text-[13px] sm:text-[14px] text-gray-300 font-medium">
+                      <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
                         <FiCalendar className="w-4 h-4 text-emerald-400" />
                         {exp.period}
                       </span>
-                      <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                      <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
                         <FiMapPin className="w-4 h-4 text-gray-400" />
                         {exp.location}
                       </span>
@@ -287,36 +500,40 @@ export default function ExperiencePage() {
                   </div>
 
                   {/* Summary */}
-                  <p className="text-[16px] text-gray-200 leading-relaxed font-normal mb-6">
+                  <p className="text-[16px] sm:text-[17px] text-gray-200 leading-relaxed font-normal mb-7">
                     {exp.summary}
                   </p>
 
                   {/* Featured Projects Built in Role (if applicable) */}
                   {exp.projects && (
-                    <div className="mb-6">
-                      <p className="text-[13px] font-bold text-gray-400 uppercase tracking-wider mb-3">
-                        Featured Systems Delivered:
+                    <div className="mb-7">
+                      <p className="text-[12px] font-bold text-gray-400 uppercase tracking-widest mb-3.5">
+                        Live Platforms &amp; Systems Delivered:
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                         {exp.projects.map((proj) => (
                           <div
                             key={proj.name}
-                            className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all"
+                            className="p-4 sm:p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 hover:bg-white/[0.03] transition-all"
                           >
                             <div className="flex items-center justify-between gap-2 mb-1.5">
-                              <span className="text-[15px] font-bold text-white">
+                              <span className="text-[15px] sm:text-[16px] font-bold text-white">
                                 {proj.name}
                               </span>
-                              {proj.url && (
+                              {proj.url ? (
                                 <a
                                   href={proj.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 text-[12px] font-semibold text-emerald-400 hover:underline"
+                                  className="inline-flex items-center gap-1 text-[12px] font-semibold text-emerald-400 hover:underline shrink-0"
                                 >
                                   <span>Live Platform</span>
                                   <FiExternalLink className="w-3.5 h-3.5" />
                                 </a>
+                              ) : (
+                                <span className="text-[11px] font-medium text-gray-400 px-2 py-0.5 rounded bg-white/[0.04]">
+                                  {proj.tag}
+                                </span>
                               )}
                             </div>
                             <p className="text-[13px] sm:text-[14px] text-gray-300 leading-relaxed">
@@ -330,7 +547,7 @@ export default function ExperiencePage() {
 
                   {/* Responsibilities Bullets (if applicable) */}
                   {exp.points && (
-                    <ul className="space-y-3 mb-6">
+                    <ul className="space-y-3 mb-7">
                       {exp.points.map((pt, j) => (
                         <li
                           key={j}
@@ -344,7 +561,7 @@ export default function ExperiencePage() {
                   )}
 
                   {/* Technology Pills */}
-                  <div className="flex flex-wrap items-center gap-2 pt-2">
+                  <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-white/[0.04]">
                     {exp.skills.map((skill) => (
                       <span
                         key={skill}
@@ -358,14 +575,14 @@ export default function ExperiencePage() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* ── EDUCATION & CERTIFICATIONS (2-COLUMN GRID) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mb-24 sm:mb-32">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mb-24 sm:mb-32">
           
           {/* Left Column: Education */}
           <div className="lg:col-span-7">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-3">
               <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest">
                 Academic Foundation
               </span>
@@ -375,7 +592,7 @@ export default function ExperiencePage() {
             </h2>
 
             <div className="space-y-5">
-              {EDUCATION.map((edu, i) => (
+              {EDUCATION.map((edu) => (
                 <div
                   key={edu.degree}
                   className="p-6 sm:p-7 rounded-2xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/30 transition-all duration-300"
@@ -404,7 +621,7 @@ export default function ExperiencePage() {
 
           {/* Right Column: Certifications */}
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-3">
               <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest">
                 Specialized Training
               </span>
@@ -437,7 +654,7 @@ export default function ExperiencePage() {
               ))}
 
               {/* Direct Link to Verified Projects */}
-              <div className="p-6 rounded-2xl bg-gradient-to-br from-[#121212] to-[#0a0a0a] border border-white/[0.08] mt-6">
+              <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#121212] to-[#0a0a0a] border border-white/[0.08] mt-6">
                 <h4 className="text-[16px] font-bold text-white mb-2">
                   Looking for Proof of Execution?
                 </h4>
@@ -454,10 +671,10 @@ export default function ExperiencePage() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* ── ACHIEVEMENTS & ACTIVITIES ── */}
-        <div className="mb-20">
+        <section className="mb-20">
           <div className="max-w-2xl mb-8">
             <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest block mb-2">
               Leadership &middot; Community
@@ -489,46 +706,9 @@ export default function ExperiencePage() {
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* ── BOTTOM CTA BANNER ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#121212] via-[#0d0d0d] to-[#080808] border border-white/[0.1] hover:border-emerald-500/30 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/[0.04] rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-2xl">
-            <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-[0.2em] block mb-3">
-              Ready to Collaborate
-            </span>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-              Have a Project or Architecture to Build?
-            </h3>
-            <p className="mt-3 text-[15px] sm:text-[16px] text-gray-300 leading-relaxed font-normal">
-              From web apps and OTT platforms to cloud infrastructure and AI automations &mdash; let&apos;s build software that accelerates your business.
-            </p>
-          </div>
-
-          <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full lg:w-auto shrink-0">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-[15px] font-bold text-black bg-white rounded-xl hover:bg-gray-100 active:scale-95 transition-all shadow-xl shadow-white/10"
-            >
-              <span>Hire Me</span>
-              <FiArrowUpRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/our-services"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold text-white border border-white/20 bg-white/[0.04] rounded-xl hover:bg-white/[0.08] hover:border-emerald-500/40 active:scale-95 transition-all"
-            >
-              <span>Our Services</span>
-            </Link>
-          </div>
-        </motion.div>
 
       </div>
     </div>
