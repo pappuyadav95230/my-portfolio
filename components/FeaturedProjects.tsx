@@ -74,19 +74,19 @@ const fadeUp = {
 
 export const FeaturedProjects = () => {
   return (
-    <section id="featured-work" className="bg-[#080808] py-24 sm:py-32 border-t border-white/[0.04] relative overflow-hidden">
+    <section id="featured-work" className="bg-[#080808] py-16 sm:py-24 lg:py-32 border-t border-white/[0.04] relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-emerald-500/[0.015] blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-[500px] h-[500px] bg-white/[0.012] blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-8 lg:px-14 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-14 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-14 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6"
+          className="mb-12 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6"
         >
           <div>
             <div className="mb-3">
@@ -101,7 +101,7 @@ export const FeaturedProjects = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <p className="text-[15px] sm:text-[16px] text-gray-300 max-w-md leading-relaxed font-normal">
+            <p className="text-[16px] sm:text-[17px] text-gray-200 max-w-lg leading-relaxed font-normal">
               A selection of live web applications, e-commerce stores, and custom platforms built and shipped for real businesses.
             </p>
             <Link
@@ -115,7 +115,7 @@ export const FeaturedProjects = () => {
         </motion.div>
 
         {/* 2x2 Grid of Featured Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {FEATURED_PROJECTS.map((project, i) => (
             <motion.div
               key={project.title}
@@ -124,14 +124,14 @@ export const FeaturedProjects = () => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-60px" }}
-              className="group relative flex flex-col justify-between p-8 sm:p-9 rounded-2xl bg-[#0d0d0d] border border-white/[0.07] hover:border-emerald-500/40 hover:bg-[#101010] hover:shadow-[0_0_35px_rgba(52,211,153,0.04)] transition-all duration-400 overflow-hidden"
+              className="group relative flex flex-col justify-between p-6 sm:p-8 lg:p-9 rounded-2xl bg-[#0d0d0d] border border-white/[0.07] hover:border-emerald-500/40 hover:bg-[#101010] hover:shadow-[0_0_35px_rgba(52,211,153,0.04)] transition-all duration-400 overflow-hidden"
             >
               {/* Corner ambient glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/[0.03] rounded-full blur-2xl pointer-events-none group-hover:bg-emerald-500/[0.08] transition-all duration-500" />
 
               <div>
                 {/* Meta header */}
-                <div className="flex items-center justify-between gap-3 mb-5">
+                <div className="flex flex-wrap items-center justify-between gap-2.5 mb-5">
                   <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-widest">
                     {project.category}
                   </span>
@@ -144,19 +144,19 @@ export const FeaturedProjects = () => {
                 <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-white transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-[13px] font-medium text-emerald-400/90 mt-1 mb-4">
+                <p className="text-[14px] font-semibold text-emerald-400/95 mt-1 mb-4">
                   {project.subtitle}
                 </p>
 
                 {/* Description */}
-                <p className="text-[14px] text-gray-400 leading-relaxed mb-6">
+                <p className="text-[15px] sm:text-[16px] text-gray-300 leading-relaxed mb-6 font-normal">
                   {project.description}
                 </p>
 
                 {/* Key Architectural Highlights */}
                 <div className="space-y-2 mb-6">
                   {project.highlights.map((h, j) => (
-                    <div key={j} className="flex items-start gap-2.5 text-[13px] text-gray-300">
+                    <div key={j} className="flex items-start gap-2.5 text-[14px] text-gray-200">
                       <FiCheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </div>

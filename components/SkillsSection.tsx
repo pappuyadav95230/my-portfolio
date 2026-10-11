@@ -164,7 +164,7 @@ const SkillsSection = () => {
               <span className="text-emerald-400">Cloud &amp; AI</span>
             </h2>
 
-            <p className="text-[15px] sm:text-[16px] text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal mb-6">
+            <p className="text-[16px] sm:text-[17px] text-gray-200 max-w-2xl mx-auto leading-relaxed font-normal mb-6">
               End-to-end software delivery &mdash; from high-performance web applications and resilient cloud infrastructure to production-ready AI workflow automations.
             </p>
 
@@ -178,7 +178,7 @@ const SkillsSection = () => {
               ].map((badge) => (
                 <span
                   key={badge}
-                  className="px-4 py-1.5 rounded-full text-[12px] font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08]"
+                  className="px-4 py-1.5 rounded-full text-[12px] sm:text-[13px] font-semibold text-gray-200 bg-white/[0.04] border border-white/[0.08]"
                 >
                   {badge}
                 </span>
@@ -209,13 +209,13 @@ const SkillsSection = () => {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white mb-2 tracking-tight group-hover:text-white">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight group-hover:text-white">
                   {service.title}
                 </h3>
 
                 <div className="w-8 h-px bg-white/15 mb-3 group-hover:w-14 group-hover:bg-emerald-400 transition-all duration-500" />
 
-                <p className="text-[13px] text-gray-400 leading-relaxed mb-6">
+                <p className="text-[14px] sm:text-[15px] text-gray-300 leading-relaxed mb-6 font-normal">
                   {service.description}
                 </p>
 

@@ -144,18 +144,18 @@ export const HomeContent = () => {
       ═══════════════════════════════════════════ */}
       <section
         id="experience"
-        className="bg-[#0a0a0a] py-24 sm:py-32 border-t border-white/[0.04] relative overflow-hidden"
+        className="bg-[#0a0a0a] py-16 sm:py-24 lg:py-32 border-t border-white/[0.04] relative overflow-hidden"
       >
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        <div className="max-w-7xl mx-auto px-8 lg:px-14">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-14">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="mb-14 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6"
+            className="mb-12 sm:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6"
           >
             <div>
               <div className="mb-3">
@@ -167,7 +167,7 @@ export const HomeContent = () => {
                 Work <span className="text-emerald-400">Experience</span>
               </h2>
             </div>
-            <p className="text-[15px] sm:text-[16px] text-gray-300 max-w-md leading-relaxed font-normal">
+            <p className="text-[16px] sm:text-[17px] text-gray-200 max-w-lg leading-relaxed font-normal">
               3+ years engineering production SaaS products, e-commerce architectures, OTT streaming platforms, and AI automations.
             </p>
           </motion.div>
@@ -194,13 +194,13 @@ export const HomeContent = () => {
                     <div className="w-[21px] h-px bg-emerald-500/30 group-hover:bg-emerald-400/60 transition-colors duration-300" />
                   </div>
 
-                  <div className="p-7 sm:p-8 rounded-2xl bg-[#0f0f0f] border border-white/[0.08] hover:border-emerald-500/40 hover:bg-[#121212] transition-all duration-300 shadow-xl">
+                  <div className="p-6 sm:p-8 rounded-2xl bg-[#0f0f0f] border border-white/[0.08] hover:border-emerald-500/40 hover:bg-[#121212] transition-all duration-300 shadow-xl">
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
                       <div>
-                        <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                           {exp.title}
                         </h3>
-                        <p className="text-[15px] text-emerald-400 font-semibold mt-0.5">
+                        <p className="text-[15px] sm:text-[16px] text-emerald-400 font-semibold mt-0.5">
                           {exp.company}
                         </p>
                       </div>
@@ -208,7 +208,7 @@ export const HomeContent = () => {
                         <span className="px-3 py-1 text-[11px] font-bold text-gray-200 bg-white/[0.06] border border-white/[0.1] rounded-md uppercase tracking-wider">
                           {exp.type}
                         </span>
-                        <span className="text-[13px] text-gray-400 font-medium">
+                        <span className="text-[13px] sm:text-[14px] text-gray-300 font-medium">
                           {exp.period}
                         </span>
                       </div>
@@ -220,7 +220,7 @@ export const HomeContent = () => {
                       {exp.points.map((pt, j) => (
                         <li
                           key={j}
-                          className="flex items-start gap-3 text-[14px] sm:text-[15px] text-gray-300 leading-relaxed font-normal"
+                          className="flex items-start gap-3 text-[15px] sm:text-[16px] text-gray-200 leading-relaxed font-normal"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0" />
                           <span>{pt}</span>
@@ -240,12 +240,12 @@ export const HomeContent = () => {
       ═══════════════════════════════════════════ */}
       <section
         id="why-hire-me"
-        className="bg-[#060606] py-24 sm:py-32 border-t border-white/[0.04] relative overflow-hidden"
+        className="bg-[#060606] py-16 sm:py-24 lg:py-32 border-t border-white/[0.04] relative overflow-hidden"
       >
         <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] blur-[120px] rounded-full translate-x-1/3 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-8 lg:px-14 relative z-10">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-14 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-12 sm:gap-16 lg:gap-20">
             {/* Left: Sticky Header */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -260,13 +260,13 @@ export const HomeContent = () => {
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-[50px] font-black tracking-tight leading-[1.08] mb-6">
+              <h2 className="text-3xl sm:text-5xl lg:text-[50px] font-black tracking-tight leading-[1.08] mb-6">
                 <span className="text-white">Built for Scale, </span>
                 <br />
                 <span className="text-emerald-400">Delivered with Impact</span>
               </h2>
 
-              <p className="text-[16px] text-gray-300 leading-relaxed max-w-md mb-8">
+              <p className="text-[16px] sm:text-[17px] text-gray-200 leading-relaxed max-w-md mb-8">
                 I combine full-stack engineering with cloud infrastructure and applied AI to deliver robust software that accelerates business growth.
               </p>
 
@@ -294,7 +294,7 @@ export const HomeContent = () => {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true, margin: "-60px" }}
-                  className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/40 hover:bg-[#121212] hover:shadow-[0_0_35px_rgba(16,185,129,0.08)] transition-all duration-500"
+                  className="group relative flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-[#0d0d0d] border border-white/[0.08] hover:border-emerald-500/40 hover:bg-[#121212] hover:shadow-[0_0_35px_rgba(16,185,129,0.08)] transition-all duration-500"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-3 mb-6">
@@ -305,10 +305,10 @@ export const HomeContent = () => {
                         {r.tag}
                       </span>
                     </div>
-                    <h3 className="text-[18px] font-bold text-white mb-3 tracking-tight group-hover:text-white">
+                    <h3 className="text-[18px] sm:text-[19px] font-bold text-white mb-3 tracking-tight group-hover:text-white">
                       {r.title}
                     </h3>
-                    <p className="text-[14px] text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                    <p className="text-[15px] text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300 font-normal">
                       {r.desc}
                     </p>
                   </div>
@@ -324,9 +324,9 @@ export const HomeContent = () => {
       ═══════════════════════════════════════════ */}
       <section
         id="process"
-        className="bg-[#0a0a0a] py-24 sm:py-32 border-t border-white/[0.04] relative overflow-hidden"
+        className="bg-[#0a0a0a] py-16 sm:py-24 lg:py-32 border-t border-white/[0.04] relative overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-8 lg:px-14">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-14">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -345,7 +345,7 @@ export const HomeContent = () => {
                 Disciplined Process, <span className="text-emerald-400">Predictable Delivery</span>
               </h2>
             </div>
-            <p className="text-[15px] sm:text-[16px] text-gray-300 max-w-md leading-relaxed lg:pb-2 mx-auto sm:mx-0 lg:mx-0 font-normal">
+            <p className="text-[16px] sm:text-[17px] text-gray-200 max-w-lg leading-relaxed lg:pb-2 mx-auto sm:mx-0 lg:mx-0 font-normal">
               Structured roadmaps, modular architecture, automated CI/CD deployments, and transparent milestone tracking from day one.
             </p>
           </motion.div>
@@ -365,11 +365,11 @@ export const HomeContent = () => {
                 <span className="text-[40px] font-black text-white/[0.12] group-hover:text-emerald-400/30 transition-colors duration-300 leading-none mb-4">
                   {p.step}
                 </span>
-                <h3 className="text-[17px] font-bold text-white mb-2 tracking-tight">
+                <h3 className="text-[17px] sm:text-[18px] font-bold text-white mb-2 tracking-tight">
                   {p.title}
                 </h3>
                 <div className="w-6 h-px bg-white/20 mb-3 group-hover:w-10 group-hover:bg-emerald-400 transition-all duration-500" />
-                <p className="text-[14px] text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                <p className="text-[14px] sm:text-[15px] text-gray-200 leading-relaxed group-hover:text-white transition-colors">
                   {p.desc}
                 </p>
               </motion.div>

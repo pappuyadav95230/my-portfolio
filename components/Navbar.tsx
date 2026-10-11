@@ -123,22 +123,22 @@ const Navbar = () => {
           className={`flex items-center justify-between px-5 h-[64px] transition-[background-color,border-color] duration-200 ${
             isOpen || scrolled
               ? "bg-[#060606]/95 backdrop-blur-md border-b border-white/[0.08]"
-              : "bg-transparent border-b border-transparent"
+              : "bg-[#060606]/80 backdrop-blur-sm border-b border-white/[0.04]"
           }`}
         >
-          <Link href="/" onClick={close}>
+          <Link href="/" onClick={close} className="flex-shrink-0">
             <img
               src="/Pappuway.png"
               alt="Pappu Way"
-              className="h-12 w-auto object-contain opacity-95"
+              className="h-10 sm:h-12 w-auto object-contain opacity-95"
             />
           </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white p-2 rounded-lg hover:bg-white/8 transition-colors cursor-pointer"
+            className="text-white p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.1] active:scale-95 transition-all cursor-pointer"
             aria-label="Toggle mobile menu"
           >
-            {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+            {isOpen ? <FiX size={22} className="text-emerald-400" /> : <FiMenu size={22} />}
           </button>
         </div>
 
@@ -148,33 +148,47 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="bg-[#060606]/98 backdrop-blur-xl border-b border-white/[0.08] overflow-hidden"
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-[#060606]/98 backdrop-blur-2xl border-b border-white/[0.1] shadow-2xl shadow-black overflow-hidden"
             >
-              <div className="px-6 py-7 flex flex-col gap-4">
+              <div className="px-6 py-6 flex flex-col gap-2 max-h-[calc(100vh-80px)] overflow-y-auto">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={close}
-                    className={`text-xl font-bold block transition-colors py-2 ${
+                    className={`text-[17px] font-bold flex items-center justify-between transition-colors py-3 px-3 rounded-xl ${
                       pathname === item.href
-                        ? "text-emerald-400"
-                        : "text-gray-300 hover:text-white"
+                        ? "text-emerald-400 bg-emerald-500/[0.08] border border-emerald-500/20"
+                        : "text-gray-300 hover:text-white hover:bg-white/[0.04]"
                     }`}
                   >
-                    {item.name}
+                    <span>{item.name}</span>
+                    {pathname === item.href && (
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    )}
                   </Link>
                 ))}
 
-                <div className="pt-3">
+                <div className="pt-4 mt-2 border-t border-white/[0.08] flex flex-col gap-3">
                   <Link
                     href="/contact"
                     onClick={close}
-                    className="inline-flex items-center justify-center gap-2 py-3 px-6 text-[14px] font-bold text-black bg-white rounded-full w-full"
+                    className="inline-flex items-center justify-center gap-2 py-3.5 px-6 text-[15px] font-bold text-black bg-emerald-400 hover:bg-emerald-300 rounded-full w-full shadow-lg shadow-emerald-500/20 active:scale-95 transition-all"
                   >
-                    Hire Me &rarr;
+                    <span>Hire Me &mdash; Get In Touch</span>
+                    <span>&rarr;</span>
                   </Link>
+
+                  <div className="flex items-center justify-center gap-4 pt-1 text-[13px] text-gray-400">
+                    <a href="tel:+919523076954" className="hover:text-emerald-400 transition-colors">
+                      +91 95230 76954
+                    </a>
+                    <span>&middot;</span>
+                    <a href="mailto:610490papu@gmail.com" className="hover:text-emerald-400 transition-colors">
+                      Email Me
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -75,8 +75,8 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
         {/* ── PRE-FOOTER CTA BANNER ── */}
-        <div className="py-14 sm:py-16 border-b border-white/[0.08]">
-          <div className="relative rounded-3xl bg-gradient-to-br from-[#121212] via-[#0d0d0d] to-[#080808] border border-white/[0.1] hover:border-emerald-500/30 p-8 sm:p-12 overflow-hidden transition-all duration-300">
+        <div className="py-10 sm:py-14 lg:py-16 border-b border-white/[0.08]">
+          <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#121212] via-[#0d0d0d] to-[#080808] border border-white/[0.1] hover:border-emerald-500/30 p-6 sm:p-10 lg:p-12 overflow-hidden transition-all duration-300">
             <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
@@ -84,35 +84,35 @@ const Footer = () => {
                 <span className="text-[12px] sm:text-[13px] font-bold text-emerald-400 uppercase tracking-[0.2em] block mb-3">
                   Let&apos;s Build Together
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight leading-tight text-white">
+                <h2 className="text-2xl sm:text-3xl lg:text-[42px] font-black tracking-tight leading-tight text-white">
                   Have a Project in Mind?{' '}
                   <span className="text-emerald-400">Let&apos;s Architect Your Solution.</span>
                 </h2>
-                <p className="mt-3 text-[15px] sm:text-[16px] text-gray-300 leading-relaxed font-normal">
+                <p className="mt-3 text-[14px] sm:text-[16px] text-gray-300 leading-relaxed font-normal">
                   Available for custom web applications, cloud hosting &amp; DevOps setup, AI workflow automations, and targeted marketing campaigns.
                 </p>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full lg:w-auto shrink-0">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto shrink-0">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-[15px] font-bold text-black bg-white rounded-xl hover:bg-gray-100 hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-white/10"
+                  className="group inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 text-[15px] font-bold text-black bg-white rounded-xl hover:bg-gray-100 hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-white/10"
                 >
-                  Hire Me
+                  <span>Hire Me</span>
                   <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
 
                 <Link
                   href="/our-services"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold text-white border border-white/20 bg-white/[0.04] rounded-xl hover:bg-white/[0.08] hover:border-emerald-500/40 active:scale-95 transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-[15px] font-semibold text-white border border-white/20 bg-white/[0.04] rounded-xl hover:bg-white/[0.08] hover:border-emerald-500/40 active:scale-95 transition-all"
                 >
                   View Services
                 </Link>
 
                 <a
                   href="tel:+919523076954"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[15px] font-medium text-gray-300 border border-white/10 rounded-xl hover:text-white hover:bg-white/[0.06] active:scale-95 transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 text-[15px] font-medium text-gray-300 border border-white/10 rounded-xl hover:text-white hover:bg-white/[0.06] active:scale-95 transition-all"
                 >
                   <FiPhone className="w-4 h-4 text-emerald-400" />
                   Call
