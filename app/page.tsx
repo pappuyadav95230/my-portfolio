@@ -73,11 +73,11 @@ const Hero = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.12 }}
-              className="font-black leading-[1.08] tracking-tight text-white text-[38px] sm:text-[54px] lg:text-[66px]"
+              className="font-black leading-[1.08] tracking-tight text-[38px] sm:text-[54px] lg:text-[66px]"
             >
-              Engineering
+              <span className="text-white">Engineering</span>
               <br />
-              <span className="text-white">Scalable Web,</span>
+              <span className="text-emerald-400">Scalable Web,</span>
               <br />
               <span className="text-white">Cloud &amp; </span>
               <span className="text-emerald-400">AI Automation</span>
