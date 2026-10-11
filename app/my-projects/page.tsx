@@ -10,9 +10,24 @@ import {
   FiCpu,
   FiCloud,
   FiGlobe,
-  FiShield,
   FiCheckCircle,
+  FiCode,
+  FiServer,
+  FiDatabase,
+  FiShield,
+  FiActivity,
+  FiBox,
 } from "react-icons/fi";
+import {
+  SiNextdotjs,
+  SiFastapi,
+  SiDocker,
+  SiGooglecloud,
+  SiPostgresql,
+  SiOpenai,
+  SiTailwindcss,
+  SiMapbox,
+} from "react-icons/si";
 
 type ProjectCategory = "All" | "AI & Machine Learning" | "Full-Stack SaaS" | "Cloud & FinOps" | "Enterprise Systems";
 
@@ -237,7 +252,19 @@ const CATEGORIES: ProjectCategory[] = [
   "Enterprise Systems",
 ];
 
-const Projects = () => {
+// Visual Stack Icons for the Hero Right Side
+const STACK_BADGES = [
+  { name: "Next.js 15", icon: <SiNextdotjs className="w-4 h-4 text-white" /> },
+  { name: "Python FastAPI", icon: <SiFastapi className="w-4 h-4 text-emerald-400" /> },
+  { name: "Docker", icon: <SiDocker className="w-4 h-4 text-blue-400" /> },
+  { name: "Google Cloud", icon: <SiGooglecloud className="w-4 h-4 text-amber-400" /> },
+  { name: "PostgreSQL", icon: <SiPostgresql className="w-4 h-4 text-cyan-400" /> },
+  { name: "GenAI & LLMs", icon: <SiOpenai className="w-4 h-4 text-emerald-300" /> },
+  { name: "Mapbox GL", icon: <SiMapbox className="w-4 h-4 text-sky-400" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="w-4 h-4 text-teal-300" /> },
+];
+
+export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("All");
 
   const filteredProjects =
@@ -246,37 +273,188 @@ const Projects = () => {
       : PROJECTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="bg-[#0a0a0a] min-h-screen text-white pt-28 sm:pt-36 pb-20 relative overflow-hidden">
-      {/* Background ambient glow */}
-      <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-emerald-500/[0.02] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-40 left-10 w-[600px] h-[600px] bg-white/[0.015] blur-[130px] rounded-full pointer-events-none" />
+    <div className="bg-[#0a0a0a] min-h-screen text-white overflow-x-hidden">
+      
+      {/* ══════════════════════════════════════════════════════════════════
+          HERO SECTION: 2-COLUMN SPLIT WITH VISUAL TECH NODES & CARDS
+          Left: Broad Executive Headline & Story
+          Right: Sleek Interactive Visual Stack Architecture Grid
+          ══════════════════════════════════════════════════════════════════ */}
+      <section
+        id="projects-hero"
+        className="relative bg-[#0a0a0a] overflow-hidden pt-24 sm:pt-32 md:pt-36 lg:pt-40 pb-14 sm:pb-20 border-b border-white/[0.06]"
+      >
+        {/* Subtle ambient lighting */}
+        <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[350px] sm:w-[650px] h-[250px] sm:h-[350px] bg-emerald-500/[0.04] blur-[100px] sm:blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-20 right-5 w-[300px] sm:w-[550px] h-[300px] sm:h-[450px] bg-white/[0.015] blur-[100px] sm:blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 relative z-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-14 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-14 items-center">
+            
+            {/* ── LEFT COLUMN: HEADLINE & STORY ── */}
+            <div className="lg:col-span-7">
+              {/* Eyebrow */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-4 sm:mb-5"
+              >
+                <span className="text-[13px] sm:text-[14px] font-bold text-emerald-400 tracking-[0.22em] uppercase block">
+                  Production Engineering Portfolio
+                </span>
+              </motion.div>
 
-        {/* ── HEADER ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-12 sm:mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-widest">
-              Production Portfolio
-            </span>
+              {/* Bold Headline with Balanced Alignment */}
+              <motion.h1
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="font-black leading-[1.05] tracking-tight text-white text-[34px] xs:text-[42px] sm:text-[54px] md:text-[62px] lg:text-[66px]"
+              >
+                Engineered for Impact
+                <br />
+                <span className="text-white">With AI, Cloud &amp; </span>
+                <br className="hidden sm:block" />
+                <span className="text-emerald-400">Production SaaS.</span>
+              </motion.h1>
+
+              {/* Punchy Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="mt-6 sm:mt-7 text-[16px] sm:text-[18px] text-gray-200 leading-[1.65] max-w-xl font-normal"
+              >
+                A curated catalog of live commercial applications, fine-tuned vision models, multi-cloud FinOps systems, and high-concurrency streaming platforms engineered from scratch and operating in production.
+              </motion.p>
+
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.28 }}
+                className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5"
+              >
+                <a
+                  href="#projects-catalog"
+                  className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 text-[14px] font-bold text-black bg-white rounded-xl hover:bg-gray-100 active:scale-95 transition-all duration-200 shadow-md shadow-white/5 text-center"
+                >
+                  <span>Explore Case Studies</span>
+                  <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-medium text-white border border-white/20 bg-white/[0.04] rounded-xl hover:bg-white/[0.08] hover:border-emerald-500/40 active:scale-95 transition-all duration-200 text-center"
+                >
+                  <span>Discuss Your Project</span>
+                  <FiArrowUpRight className="w-4 h-4 text-emerald-400" />
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* ── RIGHT COLUMN: VISUAL ENGINEERING STACK & ARCHITECTURE NODES ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="lg:col-span-5"
+            >
+              <div className="relative p-6 sm:p-7 rounded-3xl bg-[#0d0d0d] border border-white/[0.1] hover:border-emerald-500/30 transition-all duration-300 shadow-2xl">
+                {/* Glow corner */}
+                <div className="absolute top-0 right-0 w-44 h-44 bg-emerald-500/[0.05] rounded-full blur-3xl pointer-events-none" />
+
+                {/* Header Strip with visual icon */}
+                <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/[0.08]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                      <FiLayers className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-[14px] font-bold text-white leading-tight">
+                        Core Production Stack
+                      </h4>
+                      <p className="text-[11px] text-gray-400">Battle-tested architectures</p>
+                    </div>
+                  </div>
+                  <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/[0.08] px-2.5 py-1 rounded-full border border-emerald-500/20">
+                    20+ Shipped
+                  </span>
+                </div>
+
+                {/* 4 Architectural Focus Cards */}
+                <div className="grid grid-cols-2 gap-3 mb-5">
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all">
+                    <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-2 text-emerald-400">
+                      <FiGlobe className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-[12px] font-bold text-white block">Full-Stack SaaS</span>
+                    <span className="text-[11px] text-gray-400">Web apps &amp; APIs</span>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all">
+                    <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-2 text-emerald-400">
+                      <FiCpu className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-[12px] font-bold text-white block">AI &amp; Vision</span>
+                    <span className="text-[11px] text-gray-400">Custom decoders</span>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all">
+                    <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-2 text-emerald-400">
+                      <FiCloud className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-[12px] font-bold text-white block">Cloud &amp; FinOps</span>
+                    <span className="text-[11px] text-gray-400">AWS &amp; GCP scale</span>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all">
+                    <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-2 text-emerald-400">
+                      <FiServer className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-[12px] font-bold text-white block">Enterprise ERP</span>
+                    <span className="text-[11px] text-gray-400">Role dashboards</span>
+                  </div>
+                </div>
+
+                {/* Interactive Tech Badge Pills */}
+                <div>
+                  <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest block mb-2.5">
+                    Engineered With:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {STACK_BADGES.map((b) => (
+                      <span
+                        key={b.name}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/[0.07] text-[11px] font-medium text-gray-300 hover:border-emerald-500/30 transition-colors"
+                      >
+                        {b.icon}
+                        <span>{b.name}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Footer validation */}
+                <div className="mt-5 pt-3.5 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-gray-400">
+                  <span className="flex items-center gap-1.5 text-gray-300 font-medium">
+                    <FiCheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    Production Verified
+                  </span>
+                  <span className="font-mono text-emerald-400">Live Client Deployments</span>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
+        </div>
+      </section>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-white">
-            Engineered for Impact:{" "}
-            <span className="text-emerald-400">AI, Cloud &amp; Web</span>
-          </h1>
-
-          <p className="mt-5 text-[15px] sm:text-[16px] text-gray-400 leading-relaxed">
-            Real commercial platforms, custom-trained AI vision decoders, multi-cloud FinOps systems,
-            and enterprise hospital software built and shipped to production.
-          </p>
-        </motion.div>
+      {/* ══════════════════════════════════════════════════════════════════
+          PROJECTS CATALOG & INTERACTIVE FILTER
+          ══════════════════════════════════════════════════════════════════ */}
+      <section id="projects-catalog" className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-14 pt-16 sm:pt-20 pb-20 relative z-10">
 
         {/* ── CATEGORY FILTER TABS ── */}
         <motion.div
@@ -289,7 +467,7 @@ const Projects = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-full text-[13px] font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-[13px] font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                 selectedCategory === cat
                   ? "bg-white text-black shadow-md shadow-white/10"
                   : "bg-white/[0.03] text-gray-400 hover:text-white border border-white/[0.08] hover:border-white/20"
@@ -328,23 +506,23 @@ const Projects = () => {
                   </div>
 
                   {/* Title & Tagline */}
-                  <h2 className="text-2xl font-black text-white tracking-tight group-hover:text-emerald-50 transition-colors">
+                  <h2 className="text-2xl sm:text-[26px] font-black text-white tracking-tight group-hover:text-emerald-50 transition-colors">
                     {project.title}
                   </h2>
-                  <p className="text-[13px] font-medium text-emerald-400/90 mt-1 mb-4">
+                  <p className="text-[14px] sm:text-[15px] font-semibold text-emerald-400 mt-1 mb-4">
                     {project.tagline}
                   </p>
 
                   {/* Description */}
-                  <p className="text-[14px] text-gray-400 leading-relaxed mb-6">
+                  <p className="text-[15px] sm:text-[16px] text-gray-200 leading-[1.65] mb-6 font-normal">
                     {project.description}
                   </p>
 
                   {/* Key Highlights */}
-                  <div className="space-y-2 mb-6">
+                  <div className="space-y-2.5 mb-6">
                     {project.highlights.map((h, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-[13px] text-gray-300">
-                        <FiCheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2.5 text-[14px] sm:text-[15px] text-gray-200 leading-snug">
+                        <FiCheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-1" />
                         <span>{h}</span>
                       </div>
                     ))}
@@ -355,7 +533,7 @@ const Projects = () => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2.5 py-1 text-[11px] font-semibold text-gray-300 bg-white/[0.03] border border-white/[0.07] rounded-md group-hover:border-emerald-500/20 transition-colors"
+                        className="px-3 py-1 text-[12px] font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] rounded-md group-hover:border-emerald-500/25 transition-colors"
                       >
                         {tech}
                       </span>
@@ -398,42 +576,8 @@ const Projects = () => {
           </AnimatePresence>
         </div>
 
-        {/* ── BOTTOM CALLOUT TO HIRE ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#111111] to-[#0c0c0c] border border-white/[0.08] hover:border-emerald-500/30 text-center relative overflow-hidden transition-all"
-        >
-          <div className="max-w-2xl mx-auto relative z-10">
-            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-3">
-              Have an Ambitious AI or Full-Stack Architecture in Mind?
-            </h3>
-            <p className="text-[15px] text-gray-400 leading-relaxed mb-8">
-              From fine-tuning specialized domain models to deploying high-concurrency cloud applications,
-              I am available for senior engineering roles and high-impact technical consulting.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-bold text-[14px] hover:bg-gray-100 transition-all shadow-lg shadow-white/5"
-              >
-                Let&apos;s Build Together &rarr;
-              </Link>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-gray-300 hover:text-white hover:bg-white/[0.04] text-[14px] font-medium transition-all"
-              >
-                Return to Overview
-              </Link>
-            </div>
-          </div>
-        </motion.div>
+      </section>
 
-      </div>
     </div>
   );
-};
-
-export default Projects;
+}
