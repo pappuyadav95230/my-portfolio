@@ -35,6 +35,9 @@ const CONTACT_HIGHLIGHTS = [
   },
 ];
 
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbyROnyygUt_h0zV0LZKdcQ77jBTcVL7fUm9EXAlWzeXOE-kUAjfBCvkzYLQx_dKFoYGIQ/exec";
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -46,6 +49,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("610490papu@gmail.com");
@@ -53,13 +57,61 @@ export default function ContactPage() {
     setTimeout(() => setCopiedEmail(false), 2200);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    // If script URL is not configured yet
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.trim() === "" || GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")) {
+      console.warn("Google Apps Script URL is not set in app/contact/page.tsx yet.");
+      // Simulate quick response for preview so UI doesn't hang
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+      }, 700);
+      return;
+    }
+
+    try {
+      // Build form payload matching Google Sheet columns
+      const formPayload = new FormData();
+      formPayload.append("Date", new Date().toLocaleString());
+      formPayload.append("Name", formData.name);
+      formPayload.append("Email", formData.email);
+      formPayload.append("Service", formData.service);
+      formPayload.append("Timeline", formData.timeline);
+      formPayload.append("Message", formData.message);
+
+      // Also append lowercase keys for case-insensitive compatibility
+      formPayload.append("name", formData.name);
+      formPayload.append("email", formData.email);
+      formPayload.append("service", formData.service);
+      formPayload.append("timeline", formData.timeline);
+      formPayload.append("message", formData.message);
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: formPayload,
+        mode: "no-cors", // Google Apps Script redirects require no-cors to prevent browser CORS blocks
+      });
+
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 800);
+      setFormData({
+        name: "",
+        email: "",
+        service: "Full-Stack Web App / SaaS",
+        timeline: "Within 1 Month",
+        message: "",
+      });
+    } catch (err: unknown) {
+      console.error("Submission error:", err);
+      setIsSubmitting(false);
+      setErrorMessage(
+        "There was a network error sending your inquiry. Please reach out directly via WhatsApp or email."
+      );
+    }
   };
 
   return (
@@ -303,6 +355,19 @@ export default function ContactPage() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {errorMessage && (
+                  <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-[13px] leading-relaxed flex items-center justify-between">
+                    <span>{errorMessage}</span>
+                    <button
+                      type="button"
+                      onClick={() => setErrorMessage(null)}
+                      className="text-red-400 hover:text-white font-bold ml-2 cursor-pointer"
+                    >
+                      &times;
+                    </button>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <div>
                     <label htmlFor="name" className="block text-[13px] font-bold text-gray-300 mb-2">
@@ -311,6 +376,7 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="name"
+                      name="Name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -326,6 +392,7 @@ export default function ContactPage() {
                     <input
                       type="email"
                       id="email"
+                      name="Email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -342,6 +409,7 @@ export default function ContactPage() {
                     </label>
                     <select
                       id="service"
+                      name="Service"
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       className="w-full px-4 py-3.5 rounded-xl bg-[#141414] border border-white/[0.08] focus:border-emerald-500/60 text-white text-[14px] outline-none transition-all"
@@ -360,6 +428,7 @@ export default function ContactPage() {
                     </label>
                     <select
                       id="timeline"
+                      name="Timeline"
                       value={formData.timeline}
                       onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                       className="w-full px-4 py-3.5 rounded-xl bg-[#141414] border border-white/[0.08] focus:border-emerald-500/60 text-white text-[14px] outline-none transition-all"
@@ -377,6 +446,7 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     id="message"
+                    name="Message"
                     required
                     rows={5}
                     value={formData.message}
@@ -392,7 +462,13 @@ export default function ContactPage() {
                   className="w-full group inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-white hover:bg-gray-100 text-black font-bold text-[15px] active:scale-[0.99] transition-all shadow-xl shadow-white/5 cursor-pointer disabled:opacity-60"
                 >
                   {isSubmitting ? (
-                    <span>Submitting Project Scope...</span>
+                    <span className="inline-flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4 text-black" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span>Submitting Project Scope...</span>
+                    </span>
                   ) : (
                     <>
                       <span>Submit Project Inquiry</span>

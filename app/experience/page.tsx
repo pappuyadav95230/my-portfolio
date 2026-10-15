@@ -22,7 +22,7 @@ const EXPERIENCES = [
     role: "Full-Stack Developer",
     company: "Oceaniek Technologies",
     period: "2024 – Present",
-    location: "Remote / Hybrid",
+    location: "Mohali ,Chandigarh , India",
     badge: "Core Engineering Partner",
     badgeType: "emerald",
     summary:
@@ -193,7 +193,7 @@ const ACHIEVEMENTS = [
 export default function ExperiencePage() {
   return (
     <div className="bg-[#0a0a0a] min-h-screen text-white overflow-hidden">
-      
+
       {/* ══════════════════════════════════════════════════════════════════
           HERO SECTION: PREMIUM HIGH-IMPACT 2-COLUMN SPLIT (NO IMAGES)
           Left: Bold Typography & CTAs
@@ -208,9 +208,9 @@ export default function ExperiencePage() {
         <div className="absolute top-20 right-10 w-[500px] h-[450px] bg-white/[0.015] blur-[140px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-14 relative z-10">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            
+
             {/* ── LEFT COLUMN: HEADLINE & STORY ── */}
             <div className="lg:col-span-7">
               {/* Eyebrow */}
@@ -301,7 +301,7 @@ export default function ExperiencePage() {
 
                 {/* Telemetry Points */}
                 <div className="space-y-4">
-                  
+
                   {/* Item 1: Hospital Information System (HIS) */}
                   <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/30 transition-all">
                     <div className="flex items-center justify-between gap-2 mb-1">
@@ -384,7 +384,7 @@ export default function ExperiencePage() {
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-center">
-            
+
             {/* Metric 1 */}
             <div className="flex flex-col">
               <span className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-none">
@@ -433,10 +433,10 @@ export default function ExperiencePage() {
           MAIN CONTENT AREA: ROLES, EDUCATION, CERTIFICATIONS, CTA
           ══════════════════════════════════════════════════════════════════ */}
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-20 sm:pt-28 pb-20 relative z-10">
-        
+
         {/* ── WORK EXPERIENCE SECTION ── */}
         <section id="roles-section" className="mb-24 sm:mb-32">
-          
+
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-white/[0.08]">
             <div>
               <span className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest block mb-2">
@@ -473,11 +473,10 @@ export default function ExperiencePage() {
                           {exp.role}
                         </h3>
                         <span
-                          className={`px-3 py-1 text-[11px] font-bold rounded-full uppercase tracking-wider ${
-                            exp.badgeType === "emerald"
-                              ? "text-emerald-400 bg-emerald-500/[0.08] border border-emerald-500/20"
-                              : "text-gray-300 bg-white/[0.04] border border-white/[0.1]"
-                          }`}
+                          className={`px-3 py-1 text-[11px] font-bold rounded-full uppercase tracking-wider ${exp.badgeType === "emerald"
+                            ? "text-emerald-400 bg-emerald-500/[0.08] border border-emerald-500/20"
+                            : "text-gray-300 bg-white/[0.04] border border-white/[0.1]"
+                            }`}
                         >
                           {exp.badge}
                         </span>
@@ -579,7 +578,7 @@ export default function ExperiencePage() {
 
         {/* ── EDUCATION & CERTIFICATIONS (2-COLUMN GRID) ── */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mb-24 sm:mb-32">
-          
+
           {/* Left Column: Education */}
           <div className="lg:col-span-7">
             <div className="flex items-center gap-3 mb-3">
