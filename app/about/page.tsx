@@ -60,7 +60,7 @@ const AGENCY_ADVANTAGES = [
   },
   {
     title: "Production Proven (8+ Shipped Releases)",
-    desc: "Built actual commercial systems handling thousands of live users: e-commerce (ODI Studio), maritime tracking (ShipOnEarth), healthcare ERPs (HIS), and AI decoders (LipiLens).",
+    desc: "Built actual commercial systems handling thousands of live users: stock trading (BharatBullz), e-commerce (ODI Studio), maritime tracking (ShipOnEarth), and AI decoders (LipiLens).",
   },
   {
     title: "Transparent Pricing & Fixed Timelines",

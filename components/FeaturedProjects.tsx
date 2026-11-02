@@ -202,7 +202,7 @@ export const FeaturedProjects = () => {
             href="/my-projects"
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white/[0.03] border border-white/[0.1] hover:border-emerald-500/40 text-gray-300 hover:text-white text-[13px] font-bold transition-all"
           >
-            <span>View All 8 Systems (HIS, Stereo 3D AI, LinkedIn Automation &amp; more)</span>
+            <span>View All Systems (BharatBullz, HIS, Stereo 3D AI, LinkedIn Automation &amp; more)</span>
             <FiArrowUpRight className="w-4 h-4 text-emerald-400" />
           </Link>
         </div>

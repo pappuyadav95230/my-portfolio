@@ -17,6 +17,7 @@ import {
   FiShield,
   FiActivity,
   FiBox,
+  FiTrendingUp,
 } from "react-icons/fi";
 import {
   SiNextdotjs,
@@ -29,13 +30,20 @@ import {
   SiMapbox,
 } from "react-icons/si";
 
-type ProjectCategory = "All" | "AI & Machine Learning" | "Full-Stack SaaS" | "Cloud & FinOps" | "Enterprise Systems";
+type ProjectCategory =
+  | "All"
+  | "FinTech & Trading"
+  | "Full-Stack SaaS"
+  | "AI & Machine Learning"
+  | "Cloud & FinOps"
+  | "Enterprise Systems";
 
 interface Project {
   title: string;
   tagline: string;
   description: string;
   category: ProjectCategory;
+  secondaryCategory?: ProjectCategory;
   categoryLabel: string;
   technologies: string[];
   link: string;
@@ -45,6 +53,31 @@ interface Project {
 }
 
 const PROJECTS: Project[] = [
+  {
+    title: "BharatBullz — Stock Trading Platform",
+    tagline: "Indian Equities, F&O & IPO Trading Suite (Groww, Angel One & Zerodha Class)",
+    description:
+      "Full-stack Indian stock market trading and market analytics platform engineered for modern retail traders (architected like Groww, Zerodha, and Angel One). Features real-time index tickers (NIFTY 50, SENSEX, BANK NIFTY), live stock screeners, interactive technical charts, F&O derivatives suite with Option Chains & Greeks, comprehensive IPO tracking, and multi-language localization across 7+ Indian languages.",
+    category: "FinTech & Trading",
+    secondaryCategory: "Full-Stack SaaS",
+    categoryLabel: "FinTech / Stock Trading",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Real-Time Market Data",
+      "Financial Charts",
+      "F&O Analytics",
+      "Multi-Language i18n",
+    ],
+    link: "https://bharatbullz.com/",
+    badge: "Live FinTech Platform",
+    highlights: [
+      "Real-time Indian market indices (NIFTY, SENSEX, BANK NIFTY) with interactive technical charts & screeners",
+      "Comprehensive F&O derivatives with Option Chains, Option Greeks, IPO tracking & 7+ language localization",
+    ],
+  },
   {
     title: "LipiLens — AI Script Decoder",
     tagline: "Fine-Tuned Ancient Inscription & Script Deciphering Platform",
@@ -73,6 +106,7 @@ const PROJECTS: Project[] = [
     description:
       "Enterprise cloud cost management platform connecting AWS & GCP accounts to monitor granular spend across EC2, Amplify, Cloud Run, and Storage per project/service with real-time budget forecasting and optimization.",
     category: "Cloud & FinOps",
+    secondaryCategory: "FinTech & Trading",
     categoryLabel: "AWS & GCP FinOps",
     technologies: [
       "AWS API",
@@ -246,8 +280,9 @@ const PROJECTS: Project[] = [
 
 const CATEGORIES: ProjectCategory[] = [
   "All",
-  "AI & Machine Learning",
+  "FinTech & Trading",
   "Full-Stack SaaS",
+  "AI & Machine Learning",
   "Cloud & FinOps",
   "Enterprise Systems",
 ];
@@ -270,7 +305,9 @@ export default function ProjectsPage() {
   const filteredProjects =
     selectedCategory === "All"
       ? PROJECTS
-      : PROJECTS.filter((p) => p.category === selectedCategory);
+      : PROJECTS.filter(
+          (p) => p.category === selectedCategory || p.secondaryCategory === selectedCategory
+        );
 
   return (
     <div className="bg-[#0a0a0a] min-h-screen text-white overflow-x-hidden">
@@ -326,7 +363,7 @@ export default function ProjectsPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mt-6 sm:mt-7 text-[16px] sm:text-[18px] text-gray-200 leading-[1.65] max-w-xl font-normal"
               >
-                A curated catalog of live commercial applications, fine-tuned vision models, multi-cloud FinOps systems, and high-concurrency streaming platforms engineered from scratch and operating in production.
+                A curated catalog of live commercial applications, stock trading &amp; FinTech platforms, fine-tuned vision models, multi-cloud FinOps systems, and high-concurrency streaming platforms engineered from scratch and operating in production.
               </motion.p>
 
               {/* Action Buttons */}
@@ -395,6 +432,14 @@ export default function ProjectsPage() {
 
                   <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all">
                     <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-2 text-emerald-400">
+                      <FiTrendingUp className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-[12px] font-bold text-white block">FinTech &amp; Trading</span>
+                    <span className="text-[11px] text-gray-400">Groww &amp; Zerodha grade</span>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all">
+                    <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-2 text-emerald-400">
                       <FiCpu className="w-3.5 h-3.5" />
                     </div>
                     <span className="text-[12px] font-bold text-white block">AI &amp; Vision</span>
@@ -407,14 +452,6 @@ export default function ProjectsPage() {
                     </div>
                     <span className="text-[12px] font-bold text-white block">Cloud &amp; FinOps</span>
                     <span className="text-[11px] text-gray-400">AWS &amp; GCP scale</span>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 transition-all">
-                    <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mb-2 text-emerald-400">
-                      <FiServer className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-[12px] font-bold text-white block">Enterprise ERP</span>
-                    <span className="text-[11px] text-gray-400">Role dashboards</span>
                   </div>
                 </div>
 
